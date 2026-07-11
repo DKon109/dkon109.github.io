@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react'
-import { animate, useInView } from 'framer-motion'
 import Reveal from './Reveal'
 
 const stats = [
@@ -10,18 +9,39 @@ const stats = [
 
 function Stat({ target, suffix, label, color }: (typeof stats)[number]) {
   const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-40px' })
   const [value, setValue] = useState(0)
 
   useEffect(() => {
-    if (!inView) return
-    const controls = animate(0, target, {
-      duration: 1.1,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setValue(Math.round(v)),
-    })
-    return () => controls.stop()
-  }, [inView, target])
+    const el = ref.current
+    if (!el) return
+    let raf = 0
+    // Guarantee the final value even if rAF is throttled (e.g. background tab).
+    const fallback = window.setTimeout(() => setValue(target), 1400)
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        observer.disconnect()
+        const start = performance.now()
+        const duration = 1100
+        const tick = (now: number) => {
+          const t = Math.min((now - start) / duration, 1)
+          const eased = 1 - Math.pow(1 - t, 3)
+          setValue(Math.round(eased * target))
+          if (t < 1) raf = requestAnimationFrame(tick)
+        }
+        raf = requestAnimationFrame(tick)
+      },
+      { rootMargin: '-40px' },
+    )
+    observer.observe(el)
+
+    return () => {
+      observer.disconnect()
+      cancelAnimationFrame(raf)
+      clearTimeout(fallback)
+    }
+  }, [target])
 
   return (
     <div className="card stat-card" ref={ref}>

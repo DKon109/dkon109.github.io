@@ -8,8 +8,10 @@ Personal portfolio website of **Ryoji Kondo**, Full-Stack Software Developer bas
 
 - [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [Vite](https://vite.dev/) — build tooling
-- [Framer Motion](https://motion.dev/) — scroll reveal & entrance animations
+- Lightweight CSS transitions + `IntersectionObserver` for scroll reveals,
+  count-up stats, and entrance animations (no animation library)
 - [simple-icons](https://simpleicons.org/) — brand logos in the tech stack section
+- [Web3Forms](https://web3forms.com/) — serverless contact form delivery
 - GitHub Actions → GitHub Pages — CI/CD
 
 ## Development

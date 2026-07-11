@@ -1,10 +1,4 @@
-import { motion, type Variants } from 'framer-motion'
-import type { ReactNode } from 'react'
-
-const variants: Variants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0 },
-}
+import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 interface RevealProps {
   children: ReactNode
@@ -14,17 +8,32 @@ interface RevealProps {
 }
 
 export default function Reveal({ children, delay = 0, className, style }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [inView, setInView] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true)
+          observer.disconnect()
+        }
+      },
+      { rootMargin: '0px 0px -60px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <motion.div
-      className={className}
-      style={style}
-      variants={variants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+    <div
+      ref={ref}
+      className={`reveal ${inView ? 'in' : ''} ${className ?? ''}`}
+      style={{ ['--reveal-delay' as string]: `${delay}s`, ...style }}
     >
       {children}
-    </motion.div>
+    </div>
   )
 }

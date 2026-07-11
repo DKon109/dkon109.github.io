@@ -1,10 +1,13 @@
-import { useRef, type MouseEvent } from 'react'
-import { motion } from 'framer-motion'
-
-const ease = [0.22, 1, 0.36, 1] as const
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 
 export default function Hero() {
   const blobsRef = useRef<HTMLDivElement>(null)
+  const [ready, setReady] = useState(false)
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setReady(true))
+    return () => cancelAnimationFrame(id)
+  }, [])
 
   function onMouseMove(e: MouseEvent<HTMLElement>) {
     const el = blobsRef.current
@@ -15,7 +18,11 @@ export default function Hero() {
   }
 
   return (
-    <section className="hero" id="top" onMouseMove={onMouseMove}>
+    <section
+      className={`hero ${ready ? 'ready' : ''}`}
+      id="top"
+      onMouseMove={onMouseMove}
+    >
       <div className="blobs" ref={blobsRef} style={{ transition: 'transform 0.4s ease-out' }}>
         <div className="blob blob-sky" />
         <div className="blob blob-purple" />
@@ -24,50 +31,28 @@ export default function Hero() {
       </div>
 
       <div className="container hero-inner">
-        <motion.div
-          className="hero-badge"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease }}
-        >
+        <div className="hero-badge hero-anim">
           <span className="dot" />
           Open to software engineering opportunities · Sydney
-        </motion.div>
+        </div>
 
-        <motion.h1
-          className="hero-title"
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease }}
-        >
+        <h1 className="hero-title hero-anim" style={{ ['--anim-delay' as string]: '0.08s' }}>
           Ryoji Kondo
-        </motion.h1>
+        </h1>
 
-        <motion.h2
-          className="hero-role"
-          initial={{ opacity: 0, y: 32 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.22, ease }}
-        >
+        <h2 className="hero-role hero-anim" style={{ ['--anim-delay' as string]: '0.18s' }}>
           <span className="gradient-text">Full-Stack Software Developer</span>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          className="hero-sub"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.34, ease }}
-        >
+        <p className="hero-sub hero-anim" style={{ ['--anim-delay' as string]: '0.28s' }}>
           Master of Computer Science student at the University of Sydney, building
           reliable, well-tested business applications — from customer-facing web apps
           to distributed backend systems.
-        </motion.p>
+        </p>
 
-        <motion.div
-          className="hero-actions"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.46, ease }}
+        <div
+          className="hero-actions hero-anim"
+          style={{ ['--anim-delay' as string]: '0.38s' }}
         >
           <a href="#projects" className="btn btn-primary">
             View Projects
@@ -75,7 +60,7 @@ export default function Hero() {
           <a href="#contact" className="btn btn-ghost">
             Get in touch
           </a>
-        </motion.div>
+        </div>
       </div>
 
       <div className="hero-scroll-hint">Scroll</div>
