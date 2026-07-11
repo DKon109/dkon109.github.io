@@ -3,9 +3,19 @@ import Reveal from './Reveal'
 import { projects } from '../data'
 
 function onMove(e: MouseEvent<HTMLAnchorElement>) {
-  const rect = e.currentTarget.getBoundingClientRect()
-  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
-  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+  const el = e.currentTarget
+  const rect = el.getBoundingClientRect()
+  const px = (e.clientX - rect.left) / rect.width
+  const py = (e.clientY - rect.top) / rect.height
+  el.style.setProperty('--mx', `${px * 100}%`)
+  el.style.setProperty('--my', `${py * 100}%`)
+  const rx = (0.5 - py) * 6
+  const ry = (px - 0.5) * 6
+  el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`
+}
+
+function onLeave(e: MouseEvent<HTMLAnchorElement>) {
+  e.currentTarget.style.transform = ''
 }
 
 export default function Projects() {
@@ -34,12 +44,13 @@ export default function Projects() {
                 target="_blank"
                 rel="noreferrer"
                 onMouseMove={onMove}
+                onMouseLeave={onLeave}
                 style={{ '--accent': project.accent } as React.CSSProperties}
               >
                 <div className="project-top">
                   <span className="project-year">{project.year}</span>
                   <span className="project-arrow" aria-hidden>
-                    →
+                    ↗
                   </span>
                 </div>
                 <h3 className="project-title">{project.title}</h3>

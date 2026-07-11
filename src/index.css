@@ -1,17 +1,33 @@
 :root {
-  --bg: #0a0a0c;
-  --bg-soft: #121216;
-  --surface: rgba(255, 255, 255, 0.045);
-  --surface-strong: rgba(255, 255, 255, 0.08);
-  --border: rgba(255, 255, 255, 0.09);
-  --text: #f5f5f7;
-  --muted: #9b9ba3;
-  --sky: #38bdf8;
-  --purple: #a78bfa;
-  --lime: #a3e635;
-  --pink: #f472b6;
-  --radius-lg: 24px;
+  --bg: #ffffff;
+  --bg-soft: #f6f6f9;
+  --surface: #ffffff;
+  --surface-soft: #f7f7fb;
+  --border: rgba(15, 15, 25, 0.08);
+  --border-strong: rgba(15, 15, 25, 0.14);
+  --text: #0b0b12;
+  --text-soft: #26262f;
+  --muted: #61616d;
+  --faint: #9a9aa6;
+
+  --sky: #2bb6f6;
+  --purple: #7c5cff;
+  --pink: #ec4899;
+  --lime: #7bc70b;
+
+  --grad: linear-gradient(
+    92deg,
+    var(--sky) 0%,
+    var(--purple) 38%,
+    var(--pink) 70%,
+    var(--lime) 100%
+  );
+
+  --radius-lg: 26px;
   --radius-md: 16px;
+  --shadow-sm: 0 2px 10px rgba(15, 15, 25, 0.05);
+  --shadow-md: 0 12px 40px rgba(15, 15, 25, 0.09);
+  --shadow-lg: 0 24px 70px rgba(15, 15, 25, 0.13);
   --font:
     -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, sans-serif;
@@ -37,7 +53,7 @@ body {
 }
 
 ::selection {
-  background: rgba(167, 139, 250, 0.4);
+  background: rgba(124, 92, 255, 0.22);
 }
 
 a {
@@ -53,23 +69,27 @@ button {
   color: inherit;
 }
 
+input,
+textarea {
+  font-family: inherit;
+}
+
 .container {
   width: min(1120px, 92vw);
   margin: 0 auto;
 }
 
 .section {
-  padding: clamp(88px, 12vw, 148px) 0;
+  padding: clamp(84px, 11vw, 150px) 0;
   position: relative;
 }
 
-/* Section label like "* MY STACK" */
 .section-label {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
@@ -77,16 +97,24 @@ button {
 }
 
 .section-label .asterisk {
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1;
+  animation: spin 9s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .section-title {
-  font-size: clamp(34px, 5.4vw, 64px);
+  font-size: clamp(34px, 5.4vw, 62px);
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.05;
   margin-bottom: 18px;
+  color: var(--text);
 }
 
 .section-sub {
@@ -96,30 +124,46 @@ button {
   max-width: 640px;
 }
 
+/* Animated flowing gradient text */
 .gradient-text {
-  background: linear-gradient(
-    92deg,
-    var(--sky) 0%,
-    var(--purple) 36%,
-    var(--pink) 68%,
-    var(--lime) 100%
-  );
+  background: var(--grad);
+  background-size: 220% auto;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+  animation: flow 6s ease-in-out infinite;
 }
 
-/* Cards */
+@keyframes flow {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
 }
 
-/* Accessibility: respect reduced motion */
+/* Scroll progress bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  transform-origin: 0 50%;
+  background: var(--grad);
+  z-index: 60;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

@@ -1,15 +1,27 @@
+import { useRef, type MouseEvent } from 'react'
 import { motion } from 'framer-motion'
-import { links } from '../data'
 
 const ease = [0.22, 1, 0.36, 1] as const
 
 export default function Hero() {
+  const blobsRef = useRef<HTMLDivElement>(null)
+
+  function onMouseMove(e: MouseEvent<HTMLElement>) {
+    const el = blobsRef.current
+    if (!el) return
+    const dx = (e.clientX / window.innerWidth - 0.5) * 2
+    const dy = (e.clientY / window.innerHeight - 0.5) * 2
+    el.style.transform = `translate3d(${dx * 22}px, ${dy * 22}px, 0)`
+  }
+
   return (
-    <section className="hero" id="top">
-      <div className="blob blob-sky" />
-      <div className="blob blob-purple" />
-      <div className="blob blob-pink" />
-      <div className="blob blob-lime" />
+    <section className="hero" id="top" onMouseMove={onMouseMove}>
+      <div className="blobs" ref={blobsRef} style={{ transition: 'transform 0.4s ease-out' }}>
+        <div className="blob blob-sky" />
+        <div className="blob blob-purple" />
+        <div className="blob blob-pink" />
+        <div className="blob blob-lime" />
+      </div>
 
       <div className="container hero-inner">
         <motion.div
@@ -60,8 +72,8 @@ export default function Hero() {
           <a href="#projects" className="btn btn-primary">
             View Projects
           </a>
-          <a href={links.github} target="_blank" rel="noreferrer" className="btn btn-ghost">
-            GitHub ↗
+          <a href="#contact" className="btn btn-ghost">
+            Get in touch
           </a>
         </motion.div>
       </div>

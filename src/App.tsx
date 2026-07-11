@@ -1,4 +1,5 @@
 import Nav from './components/Nav'
+import ScrollProgress from './components/ScrollProgress'
 import Hero from './components/Hero'
 import About from './components/About'
 import Stack from './components/Stack'
@@ -11,6 +12,7 @@ import './components/components.css'
 export default function App() {
   return (
     <>
+      <ScrollProgress />
       <Nav />
       <main>
         <Hero />

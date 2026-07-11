@@ -1,12 +1,42 @@
+import { useEffect, useRef, useState } from 'react'
+import { animate, useInView } from 'framer-motion'
 import Reveal from './Reveal'
 
 const stats = [
-  { value: '1+', label: 'Years of hands-on development', color: 'var(--sky)' },
-  { value: '5+', label: 'Full-stack projects shipped', color: 'var(--purple)' },
-  { value: '2', label: 'Languages — EN & JA', color: 'var(--pink)' },
+  { target: 1, suffix: '+', label: 'Years of hands-on development', color: 'var(--sky)' },
+  { target: 5, suffix: '+', label: 'Full-stack projects shipped', color: 'var(--purple)' },
+  { target: 2, suffix: '', label: 'Languages — English & Japanese', color: 'var(--pink)' },
 ]
 
+function Stat({ target, suffix, label, color }: (typeof stats)[number]) {
+  const ref = useRef<HTMLDivElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-40px' })
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    if (!inView) return
+    const controls = animate(0, target, {
+      duration: 1.1,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setValue(Math.round(v)),
+    })
+    return () => controls.stop()
+  }, [inView, target])
+
+  return (
+    <div className="card stat-card" ref={ref}>
+      <div className="stat-value" style={{ color }}>
+        {value}
+        {suffix}
+      </div>
+      <div className="stat-label">{label}</div>
+    </div>
+  )
+}
+
 export default function About() {
+  const [imgOk, setImgOk] = useState(true)
+
   return (
     <section className="section" id="about">
       <div className="container">
@@ -21,42 +51,58 @@ export default function About() {
           </h2>
         </Reveal>
 
-        <div className="about-grid" style={{ marginTop: 40 }}>
+        <div className="about-grid">
           <Reveal delay={0.1}>
-            <div className="about-text">
-              <p>
-                I design, develop, test, deploy, and maintain{' '}
-                <strong>full-stack business applications</strong> using JavaScript,
-                TypeScript, React, Node.js, Python, SQL, and MongoDB — with a focus on
-                REST API design, authentication, and production-ready maintenance.
-              </p>
-              <p>
-                Alongside my Master&apos;s at the University of Sydney, I build and
-                maintain the web systems of <strong>Albion Place Hotel</strong> in
-                Sydney: reservations, customer enquiries, online ordering, and the
-                integration between online orders and bar ticket printing.
-              </p>
-              <p>
-                Before software, I spent six years as a high-school teacher — an
-                experience that taught me how to{' '}
-                <strong>communicate complex ideas simply</strong> and collaborate with
-                every kind of stakeholder. I enjoy translating business requirements
-                into reliable, well-tested software.
-              </p>
+            <div className="portrait-wrap">
+              <div className="portrait-inner">
+                {imgOk ? (
+                  <img
+                    src="/portrait.jpg"
+                    alt="Ryoji Kondo"
+                    loading="lazy"
+                    onError={() => setImgOk(false)}
+                  />
+                ) : (
+                  <div className="portrait-fallback">RK</div>
+                )}
+                <div className="portrait-tag">
+                  <span className="pin">◉</span> Sydney, Australia
+                </div>
+              </div>
             </div>
           </Reveal>
 
-          <div className="about-stats">
-            {stats.map((s, i) => (
-              <Reveal key={s.label} delay={0.15 + i * 0.08}>
-                <div className="card stat-card">
-                  <div className="stat-value" style={{ color: s.color }}>
-                    {s.value}
-                  </div>
-                  <div className="stat-label">{s.label}</div>
-                </div>
-              </Reveal>
-            ))}
+          <div>
+            <Reveal delay={0.16}>
+              <div className="about-text">
+                <p>
+                  I design, develop, test, deploy, and maintain{' '}
+                  <strong>full-stack business applications</strong> using JavaScript,
+                  TypeScript, React, Node.js, Python, SQL, and MongoDB — with a focus on
+                  REST API design, authentication, and production-ready maintenance.
+                </p>
+                <p>
+                  Alongside my Master&apos;s at the University of Sydney, I build and
+                  maintain the web systems of <strong>Albion Place Hotel</strong> in
+                  Sydney: reservations, customer enquiries, online ordering, and the
+                  integration between online orders and bar ticket printing.
+                </p>
+                <p>
+                  Before software, I spent six years as a high-school teacher — an
+                  experience that taught me how to{' '}
+                  <strong>communicate complex ideas simply</strong> and collaborate with
+                  every kind of stakeholder.
+                </p>
+              </div>
+            </Reveal>
+
+            <div className="about-stats">
+              {stats.map((s, i) => (
+                <Reveal key={s.label} delay={0.2 + i * 0.08}>
+                  <Stat {...s} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </div>
       </div>
