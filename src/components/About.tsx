@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 
 const stats = [
   { target: 1, suffix: '+', label: 'Years of hands-on development', color: 'var(--sky)' },
@@ -61,9 +62,7 @@ export default function About() {
     <section className="section" id="about">
       <div className="container">
         <Reveal>
-          <div className="section-label">
-            <span className="asterisk gradient-text">✳</span> About Me
-          </div>
+          <SectionLabel n="01">About Me</SectionLabel>
           <h2 className="section-title">
             From the classroom
             <br />

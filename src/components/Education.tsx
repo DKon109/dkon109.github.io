@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { education } from '../data'
 
 function Logo({ src, school }: { src: string; school: string }) {
@@ -28,9 +29,7 @@ export default function Education() {
     <section className="section" id="education">
       <div className="container">
         <Reveal>
-          <div className="section-label">
-            <span className="asterisk gradient-text">✳</span> Education
-          </div>
+          <SectionLabel n="05">Education</SectionLabel>
           <h2 className="section-title">
             Always <span className="gradient-text">learning.</span>
           </h2>
@@ -42,17 +41,19 @@ export default function Education() {
               <div className="card edu-card">
                 <div className="edu-top">
                   <Logo src={edu.logo} school={edu.school} />
-                  <span
-                    className="edu-badge"
-                    style={{ background: edu.badgeBg, color: edu.badgeColor }}
-                  >
-                    {edu.badge}
-                  </span>
+                  {edu.current && (
+                    <span className="edu-now">
+                      <span className="edu-now-dot" />
+                      Studying now
+                    </span>
+                  )}
                 </div>
                 <h3 className="edu-school">{edu.school}</h3>
                 <div className="edu-degree">{edu.degree}</div>
                 <div className="edu-period">
-                  {edu.period} · {edu.location}
+                  {edu.period}
+                  <span className="edu-sep">·</span>
+                  {edu.location}
                 </div>
               </div>
             </Reveal>

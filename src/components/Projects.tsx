@@ -1,5 +1,6 @@
 import type { MouseEvent } from 'react'
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { projects } from '../data'
 
 function onMove(e: MouseEvent<HTMLAnchorElement>) {
@@ -23,9 +24,7 @@ export default function Projects() {
     <section className="section" id="projects">
       <div className="container">
         <Reveal>
-          <div className="section-label">
-            <span className="asterisk gradient-text">✳</span> Selected Work
-          </div>
+          <SectionLabel n="03">Selected Work</SectionLabel>
           <h2 className="section-title">
             Projects that <span className="gradient-text">ship.</span>
           </h2>

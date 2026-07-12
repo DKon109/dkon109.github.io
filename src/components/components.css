@@ -25,9 +25,15 @@
 }
 
 .nav-logo {
-  font-weight: 800;
-  font-size: 24px;
-  letter-spacing: -0.02em;
+  font-weight: 600;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  transition: opacity 0.2s ease;
+}
+
+.nav-logo:hover {
+  opacity: 0.6;
 }
 
 .nav-links {
@@ -568,10 +574,11 @@
 }
 
 .project-year {
+  font-family: var(--mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
 .project-arrow {
@@ -692,10 +699,11 @@
 }
 
 .job-period {
+  font-family: var(--mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   color: var(--accent);
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
   white-space: nowrap;
 }
 
@@ -811,19 +819,34 @@
 }
 
 .edu-period {
+  font-family: var(--mono);
   color: var(--muted);
-  font-size: 14px;
+  font-size: 13px;
 }
 
-.edu-badge {
-  display: inline-block;
+.edu-sep {
+  margin: 0 8px;
+  color: var(--faint);
+}
+
+.edu-now {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 999px;
+  font-weight: 500;
+  color: var(--muted);
   white-space: nowrap;
+}
+
+.edu-now-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 0 rgba(123, 199, 11, 0.5);
+  animation: ping 2s ease-in-out infinite;
 }
 
 .edu-note {
@@ -1001,18 +1024,6 @@
   gap: 12px;
   flex-wrap: wrap;
   color: var(--muted);
-  font-size: 13px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-}
-
-.footer-links a {
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
 }

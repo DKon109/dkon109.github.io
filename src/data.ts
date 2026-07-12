@@ -192,9 +192,7 @@ export interface Education {
   period: string
   location: string
   logo: string
-  badge: string
-  badgeColor: string
-  badgeBg: string
+  current: boolean
 }
 
 export const education: Education[] = [
@@ -204,9 +202,7 @@ export const education: Education[] = [
     period: '2025 — Present',
     location: 'Sydney, Australia',
     logo: '/sydney.png',
-    badge: 'Current',
-    badgeColor: 'var(--sky)',
-    badgeBg: 'rgba(43, 182, 246, 0.12)',
+    current: true,
   },
   {
     school: 'Tsuru University',
@@ -214,9 +210,7 @@ export const education: Education[] = [
     period: '2011 — 2015',
     location: 'Yamanashi, Japan',
     logo: '/tsuru.png',
-    badge: 'Completed',
-    badgeColor: 'var(--purple)',
-    badgeBg: 'rgba(124, 92, 255, 0.12)',
+    current: false,
   },
 ]
 

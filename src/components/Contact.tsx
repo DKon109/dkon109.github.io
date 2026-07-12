@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { links, WEB3FORMS_ACCESS_KEY } from '../data'
 
 type Status = 'idle' | 'sending' | 'ok' | 'err'
@@ -64,9 +65,7 @@ export default function Contact() {
         <div className="contact-grid">
           <Reveal>
             <div>
-              <div className="section-label">
-                <span className="asterisk gradient-text">✳</span> Contact
-              </div>
+              <SectionLabel n="06">Contact</SectionLabel>
               <h2 className="contact-title">
                 Let&apos;s build
                 <br />
@@ -144,16 +143,8 @@ export default function Contact() {
         </div>
 
         <footer className="footer">
-          <span>© {new Date().getFullYear()} Ryoji Kondo. Built with React + Vite.</span>
-          <div className="footer-links">
-            <a href={links.github} target="_blank" rel="noreferrer">
-              GitHub
-            </a>
-            <a href={links.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a href={`mailto:${links.email}`}>Email</a>
-          </div>
+          <span>© {new Date().getFullYear()} Ryoji Kondo</span>
+          <span>Built with React &amp; TypeScript</span>
         </footer>
       </div>
     </section>

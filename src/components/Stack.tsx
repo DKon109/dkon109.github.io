@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { stack, type Tech } from '../data'
 
 function TechChip({ tech }: { tech: Tech }) {
@@ -17,9 +18,7 @@ export default function Stack() {
     <section className="section" id="stack">
       <div className="container">
         <Reveal>
-          <div className="section-label">
-            <span className="asterisk gradient-text">✳</span> My Stack
-          </div>
+          <SectionLabel n="02">My Stack</SectionLabel>
           <h2 className="section-title">
             Tools I <span className="gradient-text">build with.</span>
           </h2>

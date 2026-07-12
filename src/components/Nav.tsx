@@ -22,7 +22,7 @@ export default function Nav() {
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav-inner">
         <a href="#top" className="nav-logo">
-          <span className="gradient-text">RK</span>
+          Ryoji Kondo
         </a>
         <nav className="nav-links">
           {items.map((item) => (

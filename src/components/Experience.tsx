@@ -1,4 +1,5 @@
 import Reveal from './Reveal'
+import SectionLabel from './SectionLabel'
 import { experience } from '../data'
 
 export default function Experience() {
@@ -6,9 +7,7 @@ export default function Experience() {
     <section className="section" id="experience">
       <div className="container">
         <Reveal>
-          <div className="section-label">
-            <span className="asterisk gradient-text">✳</span> Experience
-          </div>
+          <SectionLabel n="04">Experience</SectionLabel>
           <h2 className="section-title">
             An <span className="gradient-text">unconventional</span> path.
           </h2>
