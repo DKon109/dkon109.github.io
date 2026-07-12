@@ -33,7 +33,7 @@ export default function Hero() {
       <div className="container hero-inner">
         <div className="hero-badge hero-anim">
           <span className="dot" />
-          Open to software engineering opportunities · Sydney
+          Open to software engineering opportunities · All Australia
         </div>
 
         <h1 className="hero-title hero-anim" style={{ ['--anim-delay' as string]: '0.08s' }}>

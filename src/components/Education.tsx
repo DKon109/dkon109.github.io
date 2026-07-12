@@ -18,7 +18,7 @@ function Logo({ src, school }: { src: string; school: string }) {
   }
   return (
     <div className="edu-logo">
-      <img src={src} alt={`${school} logo`} loading="lazy" onError={() => setOk(false)} />
+      <img src={src} alt={`${school} logo`} onError={() => setOk(false)} />
     </div>
   )
 }

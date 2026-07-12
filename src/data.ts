@@ -177,7 +177,7 @@ export const experience: Job[] = [
   {
     company: 'Yamanashi Prefecture Government School',
     role: 'Junior High School Teacher',
-    period: '2015 — 2016',
+    period: 'Apr 2015 — Mar 2016',
     location: 'Yamanashi, Japan',
     points: [
       'Taught English at a public junior high school, laying the foundation for my mentoring, communication, and classroom-management skills.',
