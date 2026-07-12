@@ -145,11 +145,86 @@ textarea {
   }
 }
 
+/* Site-wide colorful wash (fixed behind all content) */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.site-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  will-change: transform;
+}
+
+.sb-sky {
+  width: 46vw;
+  height: 46vw;
+  background: var(--sky);
+  opacity: 0.3;
+  top: -8vw;
+  right: -6vw;
+  animation: drift1 20s ease-in-out infinite alternate;
+}
+
+.sb-purple {
+  width: 42vw;
+  height: 42vw;
+  background: var(--purple);
+  opacity: 0.26;
+  top: 28%;
+  left: -12vw;
+  animation: drift2 24s ease-in-out infinite alternate;
+}
+
+.sb-pink {
+  width: 38vw;
+  height: 38vw;
+  background: var(--pink);
+  opacity: 0.22;
+  top: 50%;
+  right: -10vw;
+  animation: drift3 26s ease-in-out infinite alternate;
+}
+
+.sb-lime {
+  width: 40vw;
+  height: 40vw;
+  background: var(--lime);
+  opacity: 0.2;
+  bottom: -12vw;
+  left: 8vw;
+  animation: drift1 22s ease-in-out infinite alternate-reverse;
+}
+
+.sb-sky2 {
+  width: 34vw;
+  height: 34vw;
+  background: var(--sky);
+  opacity: 0.2;
+  bottom: -8vw;
+  right: 10vw;
+  animation: drift2 28s ease-in-out infinite alternate;
+}
+
+/* Content stacks above the wash; sections stay transparent so color shows through */
+.nav,
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .card {
-  background: var(--surface);
+  background: rgba(255, 255, 255, 0.72);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 /* Scroll progress bar */

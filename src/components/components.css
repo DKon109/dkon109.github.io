@@ -21,21 +21,21 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 64px;
+  height: 74px;
 }
 
 .nav-logo {
   font-weight: 800;
-  font-size: 19px;
+  font-size: 24px;
   letter-spacing: -0.02em;
 }
 
 .nav-links {
   display: flex;
-  gap: 28px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--muted);
+  gap: 34px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text-soft);
 }
 
 .nav-links a {
@@ -63,9 +63,9 @@
 }
 
 .nav-cta {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
-  padding: 9px 18px;
+  padding: 11px 22px;
   border-radius: 999px;
   color: #fff;
   background: var(--text);
@@ -756,8 +756,47 @@
   box-shadow: var(--shadow-md);
 }
 
+.edu-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px;
+}
+
+.edu-logo {
+  height: 56px;
+  min-width: 56px;
+  max-width: 180px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: grid;
+  place-items: center;
+}
+
+.edu-logo img {
+  max-height: 40px;
+  max-width: 150px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.edu-logo-fallback {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--purple);
+  padding: 0;
+  width: 56px;
+}
+
 .edu-school {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: -0.02em;
   margin-bottom: 6px;
@@ -784,7 +823,7 @@
   text-transform: uppercase;
   padding: 5px 12px;
   border-radius: 999px;
-  margin-bottom: 16px;
+  white-space: nowrap;
 }
 
 .edu-note {

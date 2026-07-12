@@ -1,4 +1,27 @@
+import { useState } from 'react'
 import Reveal from './Reveal'
+import { education } from '../data'
+
+function Logo({ src, school }: { src: string; school: string }) {
+  const [ok, setOk] = useState(true)
+  if (!ok) {
+    return (
+      <div className="edu-logo edu-logo-fallback" aria-hidden>
+        {school
+          .replace(/^The /, '')
+          .split(' ')
+          .slice(0, 2)
+          .map((w) => w[0])
+          .join('')}
+      </div>
+    )
+  }
+  return (
+    <div className="edu-logo">
+      <img src={src} alt={`${school} logo`} loading="lazy" onError={() => setOk(false)} />
+    </div>
+  )
+}
 
 export default function Education() {
   return (
@@ -14,33 +37,26 @@ export default function Education() {
         </Reveal>
 
         <div className="edu-grid">
-          <Reveal delay={0.1}>
-            <div className="card edu-card">
-              <span
-                className="edu-badge"
-                style={{ background: 'rgba(56, 189, 248, 0.12)', color: 'var(--sky)' }}
-              >
-                Current
-              </span>
-              <h3 className="edu-school">The University of Sydney</h3>
-              <div className="edu-degree">Master of Computer Science</div>
-              <div className="edu-period">2025 — Present · Sydney, Australia</div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.18}>
-            <div className="card edu-card">
-              <span
-                className="edu-badge"
-                style={{ background: 'rgba(167, 139, 250, 0.12)', color: 'var(--purple)' }}
-              >
-                Completed
-              </span>
-              <h3 className="edu-school">Tsuru University</h3>
-              <div className="edu-degree">Bachelor of Arts in School Education</div>
-              <div className="edu-period">2012 — 2015 · Yamanashi, Japan</div>
-            </div>
-          </Reveal>
+          {education.map((edu, i) => (
+            <Reveal key={edu.school} delay={0.1 + i * 0.08}>
+              <div className="card edu-card">
+                <div className="edu-top">
+                  <Logo src={edu.logo} school={edu.school} />
+                  <span
+                    className="edu-badge"
+                    style={{ background: edu.badgeBg, color: edu.badgeColor }}
+                  >
+                    {edu.badge}
+                  </span>
+                </div>
+                <h3 className="edu-school">{edu.school}</h3>
+                <div className="edu-degree">{edu.degree}</div>
+                <div className="edu-period">
+                  {edu.period} · {edu.location}
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
 
         <Reveal delay={0.24}>
