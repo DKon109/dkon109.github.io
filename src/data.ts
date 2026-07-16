@@ -104,7 +104,7 @@ export const projects: Project[] = [
     description:
       'Full-stack quiz application with REST APIs, JWT auth, role-based access control, CRUD administration, and responsive UIs — built in a collaborative team.',
     tags: ['MongoDB', 'Express', 'React', 'Node.js'],
-    link: 'https://github.com/DKon109/MERN-Online-Quiz-Platform',
+    link: 'https://mern-online-quiz-platform-1.onrender.com',
     accent: 'var(--pink)',
   },
   {
