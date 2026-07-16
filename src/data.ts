@@ -86,7 +86,7 @@ export const projects: Project[] = [
     description:
       'Full-stack healthcare application with secure REST APIs, JWT authentication, role-based access control, input validation, and structured error handling.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
-    link: 'https://github.com/DKon109/AI-chatbot',
+    link: 'https://medai-pro-portfolio.onrender.com',
     accent: 'var(--sky)',
   },
   {
