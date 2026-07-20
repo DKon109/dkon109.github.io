@@ -99,12 +99,12 @@ export const projects: Project[] = [
     accent: 'var(--purple)',
   },
   {
-    title: 'Enterprise-Scale Online Store',
+    title: 'Haven — Distributed Store',
     year: '2025',
     description:
-      'Distributed e-commerce platform integrating Store, Bank, Delivery, and Email services with resilient messaging patterns for reliability and scalability.',
-    tags: ['RabbitMQ', 'SAGA', 'Docker', 'Microservices'],
-    link: 'https://github.com/DKon109/Enterprise-Scale-Online-Store-System',
+      'A curated storefront backed by a resilient distributed fulfilment system — atomic multi-warehouse stock reservation, idempotent payments, live order tracking, and self-healing services.',
+    tags: ['Microservices', 'SAGA', 'RabbitMQ', 'Docker'],
+    link: 'https://enterprise-scale-online-store.onrender.com/#catalog',
     accent: 'var(--pink)',
   },
   {
