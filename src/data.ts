@@ -81,13 +81,22 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'Albion Place Hotel Website',
+    year: '2025',
+    description:
+      'Production website for a Sydney pub that I develop and maintain — customer-facing pages plus enhancements to online reservations, enquiries, and ordering workflows.',
+    tags: ['HTML', 'JavaScript', 'CSS', 'Production'],
+    link: 'https://github.com/DKon109/Albion-Website',
+    accent: 'var(--sky)',
+  },
+  {
     title: 'Medical AI Enhanced Chatbot',
     year: '2025',
     description:
       'Full-stack healthcare application with secure REST APIs, JWT authentication, role-based access control, input validation, and structured error handling.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
     link: 'https://medai-pro-portfolio.onrender.com',
-    accent: 'var(--sky)',
+    accent: 'var(--purple)',
   },
   {
     title: 'Enterprise-Scale Online Store',
@@ -96,7 +105,7 @@ export const projects: Project[] = [
       'Distributed e-commerce platform integrating Store, Bank, Delivery, and Email services with resilient messaging patterns for reliability and scalability.',
     tags: ['RabbitMQ', 'SAGA', 'Docker', 'Microservices'],
     link: 'https://github.com/DKon109/Enterprise-Scale-Online-Store-System',
-    accent: 'var(--purple)',
+    accent: 'var(--pink)',
   },
   {
     title: 'MERN Online Quiz Platform',
@@ -105,7 +114,7 @@ export const projects: Project[] = [
       'Full-stack quiz application with REST APIs, JWT auth, role-based access control, CRUD administration, and responsive UIs — built in a collaborative team.',
     tags: ['MongoDB', 'Express', 'React', 'Node.js'],
     link: 'https://mern-online-quiz-platform-1.onrender.com',
-    accent: 'var(--pink)',
+    accent: 'var(--lime)',
   },
   {
     title: 'Software Quality Improvement',
@@ -114,7 +123,7 @@ export const projects: Project[] = [
       'Enhanced an existing Java game codebase through refactoring, unit and integration testing, and structured QA practices to improve reliability and maintainability.',
     tags: ['Java', 'Unit Testing', 'Integration Testing', 'Refactoring'],
     link: 'https://github.com/DKon109/SQE-ShatteredPixelDungeon',
-    accent: 'var(--lime)',
+    accent: 'var(--sky)',
   },
 ]
 
