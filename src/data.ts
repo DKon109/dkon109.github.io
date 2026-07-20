@@ -82,11 +82,11 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: 'Albion Place Hotel Website',
-    year: '2025',
+    year: '2026',
     description:
       'Production website for a Sydney pub that I develop and maintain — customer-facing pages plus enhancements to online reservations, enquiries, and ordering workflows.',
     tags: ['HTML', 'JavaScript', 'CSS', 'Production'],
-    link: 'https://github.com/DKon109/Albion-Website',
+    link: 'https://albionplacehotel.com.au/',
     accent: 'var(--sky)',
   },
   {
