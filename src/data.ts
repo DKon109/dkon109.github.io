@@ -86,7 +86,7 @@ export const projects: Project[] = [
     description:
       'Production website for a Sydney pub that I develop and maintain — customer-facing pages plus enhancements to online reservations, enquiries, and ordering workflows.',
     tags: ['HTML', 'JavaScript', 'CSS', 'Production'],
-    link: 'https://albionplacehotel.com.au/',
+    link: 'https://cheery-raindrop-388ad0.netlify.app',
     accent: 'var(--sky)',
   },
   {
