@@ -24,16 +24,21 @@
   height: 74px;
 }
 
-.nav-logo {
-  font-weight: 600;
-  font-size: 18px;
-  letter-spacing: -0.01em;
-  color: var(--text);
-  transition: opacity 0.2s ease;
+.nav-mark {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+  border-radius: 11px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
 }
 
-.nav-logo:hover {
-  opacity: 0.6;
+.nav-mark svg {
+  display: block;
+}
+
+.nav-mark:hover {
+  transform: translateY(-1px) rotate(-3deg);
+  box-shadow: 0 8px 22px rgba(124, 92, 255, 0.35);
 }
 
 .nav-links {
