@@ -1,12 +1,15 @@
 import { useState, type FormEvent } from 'react'
 import Reveal from './Reveal'
 import SectionLabel from './SectionLabel'
-import { links, WEB3FORMS_ACCESS_KEY } from '../data'
+import { links } from '../data'
 
 type Status = 'idle' | 'sending' | 'ok' | 'err'
 
-const hasKey =
-  WEB3FORMS_ACCESS_KEY.length > 0 && WEB3FORMS_ACCESS_KEY !== 'YOUR_WEB3FORMS_ACCESS_KEY'
+// FormSubmit.co delivers submissions straight to this inbox — no API key or
+// backend needed. The first submission triggers a one-time activation email;
+// once confirmed, every message is forwarded automatically.
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${links.email}`
+const FORM_ACTION = `https://formsubmit.co/${links.email}`
 
 export default function Contact() {
   const [status, setStatus] = useState<Status>('idle')
@@ -20,41 +23,39 @@ export default function Contact() {
     const email = String(data.get('email') ?? '')
     const body = String(data.get('message') ?? '')
 
-    // Fallback when no Web3Forms key is set: open the visitor's mail client.
-    if (!hasKey) {
-      const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
-      const mailBody = encodeURIComponent(`${body}\n\n— ${name} (${email})`)
-      window.location.href = `mailto:${links.email}?subject=${subject}&body=${mailBody}`
-      setStatus('ok')
-      setMessage('Opening your email app…')
-      return
-    }
-
     setStatus('sending')
     setMessage('')
     try {
-      const res = await fetch('https://api.web3forms.com/submit', {
+      const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          subject: `Portfolio enquiry from ${name}`,
-          from_name: name,
           name,
           email,
           message: body,
+          _subject: `Portfolio enquiry from ${name}`,
+          _template: 'table',
+          _captcha: 'false',
         }),
       })
-      if (res.ok) {
+      const result = await res.json().catch(() => null)
+      // FormSubmit returns HTTP 200 even when delivery didn't happen (e.g. the
+      // form still needs activation), so trust the `success` flag, not the status.
+      if (res.ok && result && String(result.success) === 'true') {
         setStatus('ok')
-        setMessage("Thanks — your message is on its way. I'll reply soon.")
+        setMessage("Thanks — your message has been sent. I'll get back to you soon.")
         form.reset()
       } else {
-        throw new Error('Request failed')
+        throw new Error(result?.message || 'Request failed')
       }
     } catch {
+      // Delivery not confirmed — fall back to the visitor's mail client so the
+      // message is never silently lost.
+      const subject = encodeURIComponent(`Portfolio enquiry from ${name}`)
+      const mailBody = encodeURIComponent(`${body}\n\n— ${name} (${email})`)
+      window.location.href = `mailto:${links.email}?subject=${subject}&body=${mailBody}`
       setStatus('err')
-      setMessage('Something went wrong. Please email me directly instead.')
+      setMessage('Could not send directly — opening your email app instead.')
     }
   }
 
@@ -99,7 +100,25 @@ export default function Contact() {
           </Reveal>
 
           <Reveal delay={0.12}>
-            <form className="card form" onSubmit={handleSubmit}>
+            <form
+              className="card form"
+              method="POST"
+              action={FORM_ACTION}
+              onSubmit={handleSubmit}
+            >
+              {/* Honeypot: bots fill this hidden field; humans never see it. */}
+              <input
+                type="text"
+                name="_honey"
+                tabIndex={-1}
+                autoComplete="off"
+                style={{ display: 'none' }}
+                aria-hidden="true"
+              />
+              <input type="hidden" name="_subject" value="Portfolio enquiry" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_captcha" value="false" />
+
               <div className="field">
                 <label htmlFor="name">Name</label>
                 <input id="name" name="name" type="text" required placeholder="Your name" />

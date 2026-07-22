@@ -228,9 +228,3 @@ export const links = {
   linkedin: 'https://www.linkedin.com/in/ryoji-kondo-05654233a',
   email: 'ryoji3348@icloud.com',
 }
-
-// Free Web3Forms access key tied to ryoji3348@icloud.com.
-// Get one at https://web3forms.com (enter the email, they send the key),
-// then paste it here. Until it's a real key, the contact form falls back to
-// opening the visitor's email client addressed to the email above.
-export const WEB3FORMS_ACCESS_KEY = 'YOUR_WEB3FORMS_ACCESS_KEY'

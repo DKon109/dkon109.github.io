@@ -121,6 +121,7 @@
   background: rgba(255, 255, 255, 0.7);
   box-shadow: var(--shadow-sm);
   margin-bottom: 28px;
+  max-width: 100%;
 }
 
 .hero-badge .dot {
