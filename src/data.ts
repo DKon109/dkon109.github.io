@@ -99,10 +99,10 @@ export const projects: Project[] = [
     accent: 'var(--purple)',
   },
   {
-    title: 'Haven — Distributed Store',
+    title: 'Haven — E-Commerce Web App',
     year: '2025',
     description:
-      'A curated storefront backed by a resilient distributed fulfilment system — atomic multi-warehouse stock reservation, idempotent payments, live order tracking, and self-healing services.',
+      'An enterprise-scale e-commerce web app with a product landing page — searchable catalog, demo checkout, and login with order history — wired to a real distributed backend with multi-warehouse stock, idempotent payments, and self-healing services.',
     tags: ['Microservices', 'SAGA', 'RabbitMQ', 'Docker'],
     link: 'https://enterprise-scale-online-store.onrender.com/#catalog',
     accent: 'var(--pink)',
