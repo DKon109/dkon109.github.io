@@ -53,23 +53,35 @@ body {
   overflow-x: hidden;
 }
 
-/* Site-wide colour wash — pure CSS so it paints instantly (before JS loads),
-   with no expensive blur filters. A gentle transform drift adds subtle motion. */
-body::before {
+/* Site-wide aurora wash — soft radial-gradients mimic the original blurred
+   blobs with ZERO blur-filter cost, so it paints instantly (before JS) and
+   stays smooth on mobile. Two layers drift independently for depth + motion. */
+body::before,
+body::after {
   content: '';
   position: fixed;
-  inset: -12%;
+  inset: -15%;
   z-index: 0;
   pointer-events: none;
-  background-color: var(--bg);
-  background-image:
-    radial-gradient(46vw 46vw at 82% 0%, rgba(43, 182, 246, 0.42), transparent 62%),
-    radial-gradient(44vw 44vw at 2% 20%, rgba(124, 92, 255, 0.36), transparent 62%),
-    radial-gradient(42vw 42vw at 104% 52%, rgba(236, 72, 153, 0.3), transparent 62%),
-    radial-gradient(46vw 46vw at 12% 102%, rgba(123, 199, 11, 0.26), transparent 64%);
   background-repeat: no-repeat;
-  animation: bgDrift 34s ease-in-out infinite alternate;
   will-change: transform;
+}
+
+body::before {
+  background-image:
+    radial-gradient(46vw 46vw at 80% -6%, rgba(43, 182, 246, 0.6), transparent 60%),
+    radial-gradient(46vw 46vw at -2% 16%, rgba(124, 92, 255, 0.52), transparent 60%),
+    radial-gradient(42vw 42vw at 108% 46%, rgba(236, 72, 153, 0.46), transparent 60%),
+    radial-gradient(48vw 48vw at 8% 104%, rgba(123, 199, 11, 0.4), transparent 62%);
+  animation: bgDrift 30s ease-in-out infinite alternate;
+}
+
+body::after {
+  background-image:
+    radial-gradient(40vw 40vw at 58% 30%, rgba(124, 92, 255, 0.34), transparent 60%),
+    radial-gradient(42vw 42vw at 96% 96%, rgba(43, 182, 246, 0.34), transparent 60%),
+    radial-gradient(38vw 38vw at 24% 62%, rgba(236, 72, 153, 0.3), transparent 60%);
+  animation: bgDrift2 40s ease-in-out infinite alternate;
 }
 
 @keyframes bgDrift {
@@ -77,7 +89,16 @@ body::before {
     transform: translate3d(0, 0, 0) scale(1);
   }
   to {
-    transform: translate3d(-3%, 2%, 0) scale(1.08);
+    transform: translate3d(-4%, 3%, 0) scale(1.1);
+  }
+}
+
+@keyframes bgDrift2 {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.05);
+  }
+  to {
+    transform: translate3d(5%, -3%, 0) scale(1);
   }
 }
 
