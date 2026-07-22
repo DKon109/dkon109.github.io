@@ -3,7 +3,7 @@ import Reveal from './Reveal'
 import SectionLabel from './SectionLabel'
 import { projects } from '../data'
 
-function onMove(e: MouseEvent<HTMLAnchorElement>) {
+function onMove(e: MouseEvent<HTMLElement>) {
   const el = e.currentTarget
   const rect = el.getBoundingClientRect()
   const px = (e.clientX - rect.left) / rect.width
@@ -15,7 +15,7 @@ function onMove(e: MouseEvent<HTMLAnchorElement>) {
   el.style.transform = `perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-4px)`
 }
 
-function onLeave(e: MouseEvent<HTMLAnchorElement>) {
+function onLeave(e: MouseEvent<HTMLElement>) {
   e.currentTarget.style.transform = ''
 }
 
@@ -37,23 +37,33 @@ export default function Projects() {
         <div className="projects-grid">
           {projects.map((project, i) => (
             <Reveal key={project.title} delay={(i % 2) * 0.1}>
-              <a
+              <article
                 className="card project-card"
-                href={project.link}
-                target="_blank"
-                rel="noreferrer"
                 onMouseMove={onMove}
                 onMouseLeave={onLeave}
                 style={{ '--accent': project.accent } as React.CSSProperties}
               >
+                {project.preview && project.liveUrl && (
+                  <div className="project-preview" aria-hidden="true">
+                    <iframe
+                      src={project.liveUrl}
+                      title={`${project.title} preview`}
+                      loading="lazy"
+                      tabIndex={-1}
+                    />
+                    <span>Live preview</span>
+                  </div>
+                )}
                 <div className="project-top">
                   <span className="project-year">{project.year}</span>
-                  <span className="project-arrow" aria-hidden>
-                    ↗
-                  </span>
                 </div>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-desc">{project.description}</p>
+                {project.availabilityNote && (
+                  <p className="project-availability">
+                    <span aria-hidden="true" /> {project.availabilityNote}
+                  </p>
+                )}
                 <div className="project-tags">
                   {project.tags.map((tag) => (
                     <span key={tag} className="project-tag">
@@ -61,7 +71,19 @@ export default function Projects() {
                     </span>
                   ))}
                 </div>
-              </a>
+                <div className="project-actions">
+                  {project.liveUrl && (
+                    <a className="project-button project-button-primary" href={project.liveUrl} target="_blank" rel="noreferrer">
+                      Live Demo <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a className="project-button project-button-secondary" href={project.githubUrl} target="_blank" rel="noreferrer">
+                      GitHub <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </div>
+              </article>
             </Reveal>
           ))}
         </div>
