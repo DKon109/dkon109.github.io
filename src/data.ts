@@ -75,7 +75,10 @@ export interface Project {
   year: string
   description: string
   tags: string[]
-  link: string
+  liveUrl?: string
+  githubUrl?: string
+  preview?: boolean
+  availabilityNote?: string
   accent: string
 }
 
@@ -86,7 +89,7 @@ export const projects: Project[] = [
     description:
       'Production website for a Sydney pub that I develop and maintain — customer-facing pages plus enhancements to online reservations, enquiries, and ordering workflows.',
     tags: ['HTML', 'JavaScript', 'CSS', 'Production'],
-    link: 'https://cheery-raindrop-388ad0.netlify.app',
+    liveUrl: 'https://cheery-raindrop-388ad0.netlify.app',
     accent: 'var(--sky)',
   },
   {
@@ -95,7 +98,10 @@ export const projects: Project[] = [
     description:
       'Full-stack healthcare application with secure REST APIs, JWT authentication, role-based access control, input validation, and structured error handling.',
     tags: ['React', 'TypeScript', 'Node.js', 'Express', 'PostgreSQL'],
-    link: 'https://medai-pro-portfolio.onrender.com',
+    liveUrl: 'https://medai-pro-instant-demo.onrender.com/',
+    githubUrl: 'https://github.com/DKon109/AI-chatbot',
+    preview: true,
+    availabilityNote: 'Frontend opens instantly · free API may take up to 60s to wake',
     accent: 'var(--purple)',
   },
   {
@@ -104,7 +110,10 @@ export const projects: Project[] = [
     description:
       'An enterprise-scale e-commerce web app with a product landing page — searchable catalog, demo checkout, and login with order history — wired to a real distributed backend with multi-warehouse stock, idempotent payments, and self-healing services.',
     tags: ['Microservices', 'SAGA', 'RabbitMQ', 'Docker'],
-    link: 'https://enterprise-scale-online-store.onrender.com/#catalog',
+    liveUrl: 'https://dkon109.github.io/Enterprise-Scale-Online-Store-System/',
+    githubUrl: 'https://github.com/DKon109/Enterprise-Scale-Online-Store-System',
+    preview: true,
+    availabilityNote: 'Storefront opens instantly · free ordering API may take up to 60s to wake',
     accent: 'var(--pink)',
   },
   {
@@ -113,7 +122,7 @@ export const projects: Project[] = [
     description:
       'Full-stack quiz application with REST APIs, JWT auth, role-based access control, CRUD administration, and responsive UIs — built in a collaborative team.',
     tags: ['MongoDB', 'Express', 'React', 'Node.js'],
-    link: 'https://mern-online-quiz-platform-1.onrender.com',
+    liveUrl: 'https://mern-online-quiz-platform-1.onrender.com',
     accent: 'var(--lime)',
   },
   {
@@ -122,7 +131,7 @@ export const projects: Project[] = [
     description:
       'Enhanced an existing Java game codebase through refactoring, unit and integration testing, and structured QA practices to improve reliability and maintainability.',
     tags: ['Java', 'Unit Testing', 'Integration Testing', 'Refactoring'],
-    link: 'https://github.com/DKon109/SQE-ShatteredPixelDungeon',
+    githubUrl: 'https://github.com/DKon109/SQE-ShatteredPixelDungeon',
     accent: 'var(--sky)',
   },
 ]
