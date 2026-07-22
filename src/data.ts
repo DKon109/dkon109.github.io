@@ -48,9 +48,9 @@ export const stack: { category: string; items: Tech[] }[] = [
     category: 'Backend',
     items: [
       tech(siNodedotjs, 'Node.js'),
-      tech(siExpress, 'Express.js', '#f5f5f7'),
+      tech(siExpress, 'Express.js', '#0a0a0c'),
       tech(siPython),
-      tech(siOpenjdk, 'Java', '#f5f5f7'),
+      tech(siOpenjdk, 'Java', '#0a0a0c'),
     ],
   },
   {
@@ -61,7 +61,7 @@ export const stack: { category: string; items: Tech[] }[] = [
     category: 'Tools',
     items: [
       tech(siGit),
-      tech(siGithub, 'GitHub', '#f5f5f7'),
+      tech(siGithub, 'GitHub', '#181717'),
       tech(siDocker),
       tech(siLinux),
       tech(siNpm, 'npm'),
