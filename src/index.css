@@ -53,6 +53,34 @@ body {
   overflow-x: hidden;
 }
 
+/* Site-wide colour wash — pure CSS so it paints instantly (before JS loads),
+   with no expensive blur filters. A gentle transform drift adds subtle motion. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -12%;
+  z-index: 0;
+  pointer-events: none;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(46vw 46vw at 82% 0%, rgba(43, 182, 246, 0.42), transparent 62%),
+    radial-gradient(44vw 44vw at 2% 20%, rgba(124, 92, 255, 0.36), transparent 62%),
+    radial-gradient(42vw 42vw at 104% 52%, rgba(236, 72, 153, 0.3), transparent 62%),
+    radial-gradient(46vw 46vw at 12% 102%, rgba(123, 199, 11, 0.26), transparent 64%);
+  background-repeat: no-repeat;
+  animation: bgDrift 34s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+@keyframes bgDrift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-3%, 2%, 0) scale(1.08);
+  }
+}
+
 ::selection {
   background: rgba(124, 92, 255, 0.22);
 }
@@ -147,72 +175,6 @@ textarea {
   }
 }
 
-/* Site-wide colorful wash (fixed behind all content) */
-.site-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.site-blob {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(110px);
-  will-change: transform;
-}
-
-.sb-sky {
-  width: 46vw;
-  height: 46vw;
-  background: var(--sky);
-  opacity: 0.3;
-  top: -8vw;
-  right: -6vw;
-  animation: drift1 20s ease-in-out infinite alternate;
-}
-
-.sb-purple {
-  width: 42vw;
-  height: 42vw;
-  background: var(--purple);
-  opacity: 0.26;
-  top: 28%;
-  left: -12vw;
-  animation: drift2 24s ease-in-out infinite alternate;
-}
-
-.sb-pink {
-  width: 38vw;
-  height: 38vw;
-  background: var(--pink);
-  opacity: 0.22;
-  top: 50%;
-  right: -10vw;
-  animation: drift3 26s ease-in-out infinite alternate;
-}
-
-.sb-lime {
-  width: 40vw;
-  height: 40vw;
-  background: var(--lime);
-  opacity: 0.2;
-  bottom: -12vw;
-  left: 8vw;
-  animation: drift1 22s ease-in-out infinite alternate-reverse;
-}
-
-.sb-sky2 {
-  width: 34vw;
-  height: 34vw;
-  background: var(--sky);
-  opacity: 0.2;
-  bottom: -8vw;
-  right: 10vw;
-  animation: drift2 28s ease-in-out infinite alternate;
-}
-
 /* Content stacks above the wash; sections stay transparent so color shows through */
 .nav,
 main {
@@ -221,12 +183,10 @@ main {
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.82);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 /* Scroll progress bar */
@@ -255,18 +215,23 @@ main {
   transform: none;
 }
 
-/* Hero entrance — transitions fire once the app mounts (.ready) */
+/* Hero entrance — a pure CSS animation that auto-plays the moment the element
+   paints, so content appears without waiting on any JS-driven state. */
 .hero-anim {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--anim-delay, 0s);
+  animation: heroUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: var(--anim-delay, 0s);
 }
 
-.ready .hero-anim {
-  opacity: 1;
-  transform: none;
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

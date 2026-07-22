@@ -61,7 +61,6 @@ export default function Contact() {
 
   return (
     <section className="section contact" id="contact">
-      <div className="blob blob-purple" style={{ opacity: 0.16 }} />
       <div className="container">
         <div className="contact-grid">
           <Reveal>
