@@ -130,15 +130,6 @@ export const projects: Project[] = [
     availabilityNote: 'Free hosting may take up to 60s to wake on first visit',
     accent: 'var(--lime)',
   },
-  {
-    title: 'Software Quality Improvement',
-    year: '2026',
-    description:
-      'Enhanced an existing Java game codebase through refactoring, unit and integration testing, and structured QA practices to improve reliability and maintainability.',
-    tags: ['Java', 'Unit Testing', 'Integration Testing', 'Refactoring'],
-    githubUrl: 'https://github.com/DKon109/SQE-ShatteredPixelDungeon',
-    accent: 'var(--sky)',
-  },
 ]
 
 export interface Job {

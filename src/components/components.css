@@ -716,6 +716,29 @@
   border-color: var(--accent);
 }
 
+.projects-more {
+  margin-top: 34px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-more a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-line, rgba(0, 0, 0, 0.18));
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.projects-more a:hover {
+  color: var(--sky);
+  border-color: var(--sky);
+}
+
 @media (max-width: 820px) {
   .projects-grid {
     grid-template-columns: 1fr;

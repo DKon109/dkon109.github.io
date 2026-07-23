@@ -1,7 +1,7 @@
 import type { MouseEvent } from 'react'
 import Reveal from './Reveal'
 import SectionLabel from './SectionLabel'
-import { projects } from '../data'
+import { projects, links } from '../data'
 
 function onMove(e: MouseEvent<HTMLElement>) {
   const el = e.currentTarget
@@ -87,6 +87,17 @@ export default function Projects() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <p className="projects-more">
+            These are selected highlights — including a software quality
+            engineering project. See all of my repositories on{' '}
+            <a href={links.github} target="_blank" rel="noreferrer">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+            .
+          </p>
+        </Reveal>
       </div>
     </section>
   )
