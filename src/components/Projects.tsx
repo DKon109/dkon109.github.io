@@ -90,8 +90,7 @@ export default function Projects() {
 
         <Reveal>
           <p className="projects-more">
-            These are selected highlights — including a software quality
-            engineering project. See all of my repositories on{' '}
+            See all of my repositories on{' '}
             <a href={links.github} target="_blank" rel="noreferrer">
               GitHub <span aria-hidden="true">↗</span>
             </a>
