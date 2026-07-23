@@ -90,6 +90,8 @@ export const projects: Project[] = [
       'Production website for a Sydney pub that I develop and maintain — customer-facing pages plus enhancements to online reservations, enquiries, and ordering workflows.',
     tags: ['HTML', 'JavaScript', 'CSS', 'Production'],
     liveUrl: 'https://cheery-raindrop-388ad0.netlify.app',
+    githubUrl: 'https://github.com/DKon109/Albion-Website',
+    preview: true,
     accent: 'var(--sky)',
   },
   {
