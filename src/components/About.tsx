@@ -10,14 +10,14 @@ const stats = [
 
 function Stat({ target, suffix, label, color }: (typeof stats)[number]) {
   const ref = useRef<HTMLDivElement>(null)
-  const [value, setValue] = useState(0)
+  // Start at the final value so the real number is always shown — the count-up
+  // only runs as an animation once the card scrolls into view.
+  const [value, setValue] = useState(target)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
     let raf = 0
-    // Guarantee the final value even if rAF is throttled (e.g. background tab).
-    const fallback = window.setTimeout(() => setValue(target), 1400)
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -40,7 +40,7 @@ function Stat({ target, suffix, label, color }: (typeof stats)[number]) {
     return () => {
       observer.disconnect()
       cancelAnimationFrame(raf)
-      clearTimeout(fallback)
+      // If unmounted mid-animation, nothing to restore — remount re-inits to target.
     }
   }, [target])
 
