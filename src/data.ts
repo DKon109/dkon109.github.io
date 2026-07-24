@@ -148,7 +148,7 @@ export const experience: Job[] = [
     period: 'Jul 2025 — Present',
     location: 'Sydney, Australia',
     points: [
-      'Develop, test, deploy, and maintain the venue’s official website — both customer-facing features and internal staff systems.',
+      'Designed and developed a production quality website prototype to drive improvements to the venue’s official website. Collaborated with managers and other stakeholders to gather requirements, translated business needs into technical solutions, and proposed UI, UX, and workflow enhancements to the external development vendor.',
       'Ship frontend and backend enhancements for online reservations, customer enquiry forms, and online ordering workflows.',
       'Designed and maintain the integration between online orders and the bar’s ticket-printing system to streamline operations.',
       'Diagnose production issues and work with stakeholders to translate business requirements into reliable software.',
