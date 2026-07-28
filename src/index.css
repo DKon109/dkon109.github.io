@@ -83,6 +83,10 @@ textarea {
 .section {
   padding: clamp(84px, 11vw, 150px) 0;
   position: relative;
+  /* Skip rendering below-the-fold sections until they approach the viewport.
+     Purely a paint-time optimisation — no visual change. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
 }
 
 .section-label {

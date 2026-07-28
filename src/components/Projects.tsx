@@ -1,4 +1,4 @@
-import type { MouseEvent } from 'react'
+import { useEffect, useRef, useState, type MouseEvent } from 'react'
 import Reveal from './Reveal'
 import SectionLabel from './SectionLabel'
 import { projects, links } from '../data'
@@ -17,6 +17,73 @@ function onMove(e: MouseEvent<HTMLElement>) {
 
 function onLeave(e: MouseEvent<HTMLElement>) {
   e.currentTarget.style.transform = ''
+}
+
+/**
+ * Live iframe preview kept off the critical path: the iframe is injected only
+ * after the page itself has finished loading AND the card is near the
+ * viewport. The styled shell holds the layout, so nothing shifts — the
+ * preview simply comes alive as you reach it. This keeps mobile first paint
+ * fast without giving up real live previews.
+ */
+function LivePreview({ src, title }: { src: string; title: string }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    let done = false
+    let idleTimer = 0
+
+    const activate = () => {
+      if (done) return
+      done = true
+      setActive(true)
+      cleanup()
+    }
+
+    // Once the page has loaded, wait for the browser to go idle before
+    // pulling in previews. Scrolling a card into view activates it sooner.
+    const startAfterLoad = () => {
+      if (done || idleTimer) return
+      idleTimer = window.setTimeout(activate, 1200)
+    }
+
+    const onPageLoad = () => startAfterLoad()
+
+    if (document.readyState === 'complete') {
+      startAfterLoad()
+    } else {
+      window.addEventListener('load', onPageLoad, { once: true })
+      // Safety net: never hold previews hostage to a hung resource.
+      idleTimer = window.setTimeout(activate, 4000)
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) activate()
+      },
+      { rootMargin: '400px' },
+    )
+    io.observe(el)
+
+    function cleanup() {
+      window.removeEventListener('load', onPageLoad)
+      clearTimeout(idleTimer)
+      io.disconnect()
+    }
+
+    return cleanup
+  }, [])
+
+  return (
+    <div className="project-preview" ref={ref} aria-hidden="true">
+      {active && <iframe src={src} title={title} loading="lazy" tabIndex={-1} />}
+      <span>Live preview</span>
+    </div>
+  )
 }
 
 export default function Projects() {
@@ -44,15 +111,7 @@ export default function Projects() {
                 style={{ '--accent': project.accent } as React.CSSProperties}
               >
                 {project.preview && project.liveUrl && (
-                  <div className="project-preview" aria-hidden="true">
-                    <iframe
-                      src={project.liveUrl}
-                      title={`${project.title} preview`}
-                      loading="lazy"
-                      tabIndex={-1}
-                    />
-                    <span>Live preview</span>
-                  </div>
+                  <LivePreview src={project.liveUrl} title={`${project.title} preview`} />
                 )}
                 <div className="project-top">
                   <span className="project-year">{project.year}</span>

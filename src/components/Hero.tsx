@@ -3,10 +3,28 @@ import { useEffect, useRef, useState, type MouseEvent } from 'react'
 export default function Hero() {
   const blobsRef = useRef<HTMLDivElement>(null)
   const [ready, setReady] = useState(false)
+  const [showBlobs, setShowBlobs] = useState(false)
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setReady(true))
     return () => cancelAnimationFrame(id)
+  }, [])
+
+  // Mount the blurred blobs only after the page has painted and loaded, then
+  // fade them in. The expensive blur rasterisation happens off the critical
+  // path, so mobile first paint stays instant while the look is unchanged.
+  useEffect(() => {
+    const start = () => setShowBlobs(true)
+    if (document.readyState === 'complete') {
+      const id = requestAnimationFrame(start)
+      return () => cancelAnimationFrame(id)
+    }
+    window.addEventListener('load', start, { once: true })
+    const fallback = window.setTimeout(start, 1500)
+    return () => {
+      window.removeEventListener('load', start)
+      clearTimeout(fallback)
+    }
   }, [])
 
   function onMouseMove(e: MouseEvent<HTMLElement>) {
@@ -23,11 +41,15 @@ export default function Hero() {
       id="top"
       onMouseMove={onMouseMove}
     >
-      <div className="blobs" ref={blobsRef} style={{ transition: 'transform 0.4s ease-out' }}>
-        <div className="blob blob-sky" />
-        <div className="blob blob-purple" />
-        <div className="blob blob-pink" />
-        <div className="blob blob-lime" />
+      <div className={`blobs ${showBlobs ? 'blobs-in' : ''}`} ref={blobsRef}>
+        {showBlobs && (
+          <>
+            <div className="blob blob-sky" />
+            <div className="blob blob-purple" />
+            <div className="blob blob-pink" />
+            <div className="blob blob-lime" />
+          </>
+        )}
       </div>
 
       <div className="container hero-inner">
