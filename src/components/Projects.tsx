@@ -20,11 +20,11 @@ function onLeave(e: MouseEvent<HTMLElement>) {
 }
 
 /**
- * Live iframe preview kept off the critical path: the iframe is injected only
- * after the page itself has finished loading AND the card is near the
- * viewport. The styled shell holds the layout, so nothing shifts — the
- * preview simply comes alive as you reach it. This keeps mobile first paint
- * fast without giving up real live previews.
+ * Live iframe preview kept entirely off the initial load: the iframe is
+ * injected only once its card approaches the viewport. Opening the site
+ * therefore loads zero external apps — they boot on demand as you scroll,
+ * which keeps mobile load fast without giving up real live previews.
+ * The styled shell holds the layout, so nothing shifts when one appears.
  */
 function LivePreview({ src, title }: { src: string; title: string }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -35,7 +35,6 @@ function LivePreview({ src, title }: { src: string; title: string }) {
     if (!el) return
 
     let done = false
-    let idleTimer = 0
 
     const activate = () => {
       if (done) return
@@ -44,34 +43,29 @@ function LivePreview({ src, title }: { src: string; title: string }) {
       cleanup()
     }
 
-    // Once the page has loaded, wait for the browser to go idle before
-    // pulling in previews. Scrolling a card into view activates it sooner.
-    const startAfterLoad = () => {
-      if (done || idleTimer) return
-      idleTimer = window.setTimeout(activate, 1200)
-    }
-
-    const onPageLoad = () => startAfterLoad()
-
-    if (document.readyState === 'complete') {
-      startAfterLoad()
-    } else {
-      window.addEventListener('load', onPageLoad, { once: true })
-      // Safety net: never hold previews hostage to a hung resource.
-      idleTimer = window.setTimeout(activate, 4000)
+    // Position check used as a backup for environments where
+    // IntersectionObserver callbacks are throttled.
+    const check = () => {
+      if (done) return
+      const vh = window.innerHeight || document.documentElement.clientHeight || 800
+      const rect = el.getBoundingClientRect()
+      if (rect.top < vh + 300 && rect.bottom > -300) activate()
     }
 
     const io = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) activate()
       },
-      { rootMargin: '400px' },
+      { rootMargin: '300px' },
     )
     io.observe(el)
 
+    window.addEventListener('scroll', check, { passive: true })
+    window.addEventListener('resize', check)
+
     function cleanup() {
-      window.removeEventListener('load', onPageLoad)
-      clearTimeout(idleTimer)
+      window.removeEventListener('scroll', check)
+      window.removeEventListener('resize', check)
       io.disconnect()
     }
 
