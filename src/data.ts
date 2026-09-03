@@ -9,6 +9,8 @@ import {
   siPython,
   siFastapi,
   siOpenjdk,
+  siKotlin,
+  siAndroid,
   siSpringboot,
   siNextdotjs,
   siCloudflareworkers,
@@ -60,6 +62,10 @@ export const stack: { category: string; items: Tech[] }[] = [
       tech(siOpenjdk, 'Java', '#0a0a0c'),
       tech(siSpringboot, 'Spring Boot'),
     ],
+  },
+  {
+    category: 'Mobile',
+    items: [tech(siKotlin), tech(siAndroid)],
   },
   {
     category: 'Database',

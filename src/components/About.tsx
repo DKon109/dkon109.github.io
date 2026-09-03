@@ -96,11 +96,12 @@ export default function About() {
               <div className="about-text">
                 <p>
                   I build software that real people use: a bilingual community site
-                  that made a 37-member a cappella group findable online, a distributed
-                  storefront that keeps orders correct when services fail mid-checkout,
-                  and a secure healthcare workflow tool with role-based access. What I
-                  care about most is <strong>getting things into production</strong> —
-                  and keeping them running once they are there.
+                  that made a 37-member a cappella group findable online, and the
+                  on-device Android protection layer of a real-time scam-call detection
+                  system that has to reach the user within 60 seconds of a call
+                  connecting — without root access. What I care about most is{' '}
+                  <strong>getting things into production</strong> — and keeping them
+                  running once they are there.
                 </p>
                 <p>
                   Alongside my Master&apos;s at the University of Sydney, I build and
