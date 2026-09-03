@@ -4,7 +4,7 @@ import SectionLabel from './SectionLabel'
 
 const stats = [
   { target: 1, suffix: '+', label: 'Years of hands-on development', color: 'var(--sky)' },
-  { target: 5, suffix: '+', label: 'Full-stack projects shipped', color: 'var(--purple)' },
+  { target: 4, suffix: '', label: 'Full-stack apps shipped', color: 'var(--purple)' },
   { target: 2, suffix: '', label: 'Languages — English & Japanese', color: 'var(--pink)' },
 ]
 
@@ -95,10 +95,12 @@ export default function About() {
             <Reveal delay={0.16}>
               <div className="about-text">
                 <p>
-                  I design, develop, test, deploy, and maintain{' '}
-                  <strong>full-stack business applications</strong> using JavaScript,
-                  TypeScript, React, Node.js, Python, SQL, and MongoDB — with a focus on
-                  REST API design, authentication, and production-ready maintenance.
+                  I build software that real people use: a bilingual community site
+                  that made a 37-member a cappella group findable online, a distributed
+                  storefront that keeps orders correct when services fail mid-checkout,
+                  and a secure healthcare workflow tool with role-based access. What I
+                  care about most is <strong>getting things into production</strong> —
+                  and keeping them running once they are there.
                 </p>
                 <p>
                   Alongside my Master&apos;s at the University of Sydney, I build and
