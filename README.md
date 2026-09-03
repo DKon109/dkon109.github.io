@@ -11,8 +11,22 @@ Personal portfolio website of **Ryoji Kondo**, Full-Stack Software Developer bas
 - Lightweight CSS transitions + `IntersectionObserver` for scroll reveals,
   count-up stats, and entrance animations (no animation library)
 - [simple-icons](https://simpleicons.org/) — brand logos in the tech stack section
-- [Web3Forms](https://web3forms.com/) — serverless contact form delivery
+- [FormSubmit](https://formsubmit.co/) — serverless contact form delivery, with a
+  `mailto:` fallback so a message is never silently lost
 - GitHub Actions → GitHub Pages — CI/CD
+
+## Implementation notes
+
+**Live previews load on approach.** Each project card embeds the real deployed site
+rather than a screenshot. Loading four external apps up front cost several seconds on
+mobile, so the iframes are injected only once their card comes within 300px of the
+viewport — opening the site makes zero external requests, and the styled shell holds
+the layout so nothing shifts when a preview appears.
+
+**The aurora blobs mount after load.** The hero's blurred gradient blobs are expensive
+to rasterise on mobile GPUs, so they are mounted once the page has loaded and then
+faded in, keeping that work off first paint. Offscreen sections are skipped with
+`content-visibility`.
 
 ## Development
 
