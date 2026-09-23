@@ -244,6 +244,7 @@ export const education: Education[] = [
 ]
 
 export const links = {
+  resume: '/Ryoji-Kondo-Resume.pdf',
   github: 'https://github.com/DKon109',
   linkedin: 'https://www.linkedin.com/in/ryoji-kondo-05654233a',
   email: 'ryoji3348@icloud.com',
