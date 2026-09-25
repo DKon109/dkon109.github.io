@@ -163,7 +163,7 @@ export const experience: Job[] = [
     period: 'Jul 2025 — Present',
     location: 'Sydney, Australia',
     points: [
-      'Designed and developed a production quality website prototype to drive improvements to the venue’s official website. Collaborated with managers and other stakeholders to gather requirements, translated business needs into technical solutions, and proposed UI, UX, and workflow enhancements to the external development vendor.',
+      'Rebuilt the venue’s official website from the ground up and deployed it to production, working from access granted by the external web vendor. Gathered requirements from managers and floor staff, translated them into UI, UX, and workflow improvements, and shipped the result as the live site.',
       'Ship frontend and backend enhancements for online reservations, customer enquiry forms, and online ordering workflows.',
       'Designed and maintain the integration between online orders and the bar’s ticket-printing system to streamline operations.',
       'Diagnose production issues and work with stakeholders to translate business requirements into reliable software.',
