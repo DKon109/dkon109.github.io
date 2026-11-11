@@ -123,15 +123,15 @@ export const projects: Project[] = [
     accent: 'var(--purple)',
   },
   {
-    title: 'Haven — E-Commerce Web App',
-    year: '2025',
+    title: 'Tixora — Event Management & Seating',
+    year: '2026',
     description:
-      'An enterprise-scale e-commerce web app with a product landing page — searchable catalog, demo checkout, and login with order history — wired to a real distributed backend with multi-warehouse stock, idempotent payments, and self-healing services.',
-    tags: ['Microservices', 'SAGA', 'RabbitMQ', 'Docker'],
-    liveUrl: 'https://dkon109.github.io/Enterprise-Scale-Online-Store-System/',
-    githubUrl: 'https://github.com/DKon109/Enterprise-Scale-Online-Store-System',
+      'A University of Sydney team project connecting event discovery, organiser publishing, simulated checkout, and group seating. My work focused on event ownership and lifecycle rules, venue validation and templates, and transaction and concurrency verification.',
+    tags: ['Java', 'Spring Boot', 'React', 'MySQL'],
+    liveUrl: 'https://tixora-live.onrender.com/',
+    githubUrl: 'https://github.com/DKon109/Lab04_Team10',
     preview: true,
-    availabilityNote: 'Storefront opens instantly · free ordering API may take up to 60s to wake',
+    availabilityNote: 'Free server may take 1–2 minutes to wake on first visit',
     accent: 'var(--pink)',
   },
   {
