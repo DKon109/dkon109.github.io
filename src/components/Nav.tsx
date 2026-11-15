@@ -59,9 +59,6 @@ export default function Nav() {
           </a>
           <a href="#contact">Get in touch</a>
         </nav>
-        <a href={links.resume} target="_blank" rel="noreferrer" className="nav-cta">
-          Resume
-        </a>
       </div>
     </header>
   )
