@@ -48,6 +48,8 @@ import {
   siNumpy,
   siScikitlearn,
   siGooglegemini,
+  siClaudecode,
+  siCursor,
   siGit,
   siGithub,
   siNpm,
@@ -187,6 +189,9 @@ export const stack: { category: string; items: Tech[] }[] = [
   {
     category: 'Tools',
     items: [
+      practice('Codex'),
+      tech(siClaudecode),
+      tech(siCursor, 'Cursor', '#14120b'),
       tech(siGit),
       tech(siGithub, 'GitHub', '#181717'),
       tech(siDocker),
