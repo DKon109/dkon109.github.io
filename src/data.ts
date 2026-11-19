@@ -29,7 +29,8 @@ import {
 
 export interface Tech {
   name: string
-  path: string
+  path?: string
+  image?: string
   color: string
 }
 
@@ -38,6 +39,13 @@ const tech = (icon: SimpleIcon, name?: string, colorOverride?: string): Tech => 
   name: name ?? icon.title,
   path: icon.path,
   color: colorOverride ?? `#${icon.hex}`,
+})
+
+// Shared network symbol for technologies without a bundled brand icon.
+const networkTech = (name: string): Tech => ({
+  name,
+  path: 'M9 2h6v6H9V2Zm2 6h2v3h7v5h3v6h-6v-6h1v-3h-5v3h2v6H9v-6h2v-3H6v3h1v6H1v-6h3v-5h7V8Z',
+  color: '#2563eb',
 })
 
 export const stack: { category: string; items: Tech[] }[] = [
@@ -72,9 +80,13 @@ export const stack: { category: string; items: Tech[] }[] = [
     items: [
       {
         name: 'P4',
-        path: 'M8 5 1 12l7 7 1.5-1.5L4 12l5.5-5.5L8 5Zm8 0-1.5 1.5L20 12l-5.5 5.5L16 19l7-7-7-7ZM13 3l-4 18h2l4-18h-2Z',
+        image: '/icons/p4.svg',
         color: '#7c3aed',
       },
+      networkTech('Mininet'),
+      networkTech('Open vSwitch'),
+      networkTech('OpenFlow'),
+      networkTech('SDN'),
     ],
   },
   {

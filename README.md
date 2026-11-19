@@ -15,6 +15,10 @@ Personal portfolio website of **Ryoji Kondo**, Full-Stack Software Developer bas
   `mailto:` fallback so a message is never silently lost
 - GitHub Actions → GitHub Pages — CI/CD
 
+The P4 logo in `public/icons/p4.svg` is the unmodified P4.org logo displayed on
+[Wikipedia](https://en.wikipedia.org/wiki/P4_(programming_language)), sourced from
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:P4-logo.svg).
+
 ## Implementation notes
 
 **Live previews load on approach.** Each project card embeds the real deployed site
