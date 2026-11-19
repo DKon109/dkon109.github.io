@@ -142,7 +142,6 @@ export const stack: { category: string; items: Tech[] }[] = [
       { name: 'GNS3', image: '/icons/gns3.png', color: '#0086c9' },
       networkTech('SDN'),
       { name: 'ONOS', image: '/icons/onos.png', color: '#007db7' },
-      networkTech('BMv2'),
       { name: 'iperf3', image: '/icons/iperf3.png', color: '#30333a' },
       { name: 'tcpdump', image: '/icons/tcpdump.png', color: '#ad0000' },
     ],
@@ -189,7 +188,7 @@ export const stack: { category: string; items: Tech[] }[] = [
   {
     category: 'Tools',
     items: [
-      practice('Codex'),
+      { name: 'Codex', image: '/icons/codex.png', color: '#6366f1' },
       tech(siClaudecode),
       tech(siCursor, 'Cursor', '#14120b'),
       tech(siGit),

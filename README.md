@@ -50,7 +50,17 @@ These assets are displayed without recolouring. Practices and specifications
 without a verified standalone project logo retain neutral symbols; certification
 badges and unrelated vendor logos are not used as substitutes.
 
+The Codex app icon (`public/icons/codex.png`) is copied without modification from
+the official OpenAI macOS app's `icon-codex-light.png` resource. Product:
+[OpenAI Codex](https://openai.com/codex/).
+
 ## Implementation notes
+
+**Skill details:** Every skill chip opens a native modal dialog with a short
+usage example and GitHub source cards. Content is maintained in `src/techUsage.ts`.
+Public project code and upstream tool repositories have distinct labels; private
+coursework is identified explicitly. Escape, the close button and the backdrop
+dismiss the dialog, and native dialog focus returns to the triggering chip.
 
 **About statistics:** The displayed full-stack app total is 9, as specified by
 the portfolio owner. It is maintained separately from the GitHub repository count.
