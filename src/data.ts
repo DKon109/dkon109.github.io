@@ -20,6 +20,9 @@ import {
   siMysql,
   siDocker,
   siLinux,
+  siUbuntu,
+  siVirtualbox,
+  siWireshark,
   siGit,
   siGithub,
   siNpm,
@@ -31,6 +34,7 @@ export interface Tech {
   name: string
   path?: string
   image?: string
+  imageViewBox?: string
   color: string
 }
 
@@ -85,7 +89,9 @@ export const stack: { category: string; items: Tech[] }[] = [
       },
       { name: 'Mininet', image: '/icons/mininet.png', color: '#333333' },
       { name: 'Open vSwitch', image: '/icons/open-vswitch.png', color: '#5b9b3f' },
-      { name: 'OpenFlow', image: '/icons/openflow.jpg', color: '#00a4c7' },
+      { name: 'OpenFlow', image: '/icons/openflow.png', imageViewBox: '68 18 158 120', color: '#00a4c7' },
+      tech(siWireshark),
+      { name: 'GNS3', image: '/icons/gns3.png', color: '#0086c9' },
       networkTech('SDN'),
     ],
   },
@@ -103,6 +109,8 @@ export const stack: { category: string; items: Tech[] }[] = [
       tech(siRabbitmq),
       tech(siJunit5, 'JUnit'),
       tech(siLinux),
+      tech(siUbuntu),
+      tech(siVirtualbox),
       tech(siNpm, 'npm'),
     ],
   },

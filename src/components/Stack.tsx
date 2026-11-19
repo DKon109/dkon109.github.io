@@ -5,7 +5,11 @@ import { stack, type Tech } from '../data'
 function TechChip({ tech }: { tech: Tech }) {
   return (
     <span className="tech-chip" style={{ '--chip-color': tech.color } as React.CSSProperties}>
-      {tech.image ? (
+      {tech.image && tech.imageViewBox ? (
+        <svg viewBox={tech.imageViewBox} role="img" aria-label={tech.name}>
+          <image href={tech.image} width={266} height={204} />
+        </svg>
+      ) : tech.image ? (
         <img src={tech.image} alt={tech.name} width={22} height={22} />
       ) : (
         <svg viewBox="0 0 24 24" role="img" aria-label={tech.name}>

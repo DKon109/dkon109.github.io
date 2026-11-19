@@ -24,7 +24,10 @@ modifying the images:
 
 - Mininet: [official site icon](https://mininet.org/favicon.png)
 - Open vSwitch: [official logo](https://www.openvswitch.org/assets/vswitch.png)
-- OpenFlow: [official logo](https://opennetworking.org/wp-content/uploads/2014/11/OpenFlow-Logo-Small.jpg)
+- OpenFlow: [official logo](https://opennetworking.org/wp-content/uploads/2018/01/Openflow_icon.png), displayed with an SVG viewport that shows only the symbol above the wordmark
+- GNS3: [unmodified project logo](https://github.com/GNS3/gns3-gui/blob/master/resources/images/gns3_logo.png) from the [official GPL-3.0 project](https://github.com/GNS3/gns3-gui)
+
+Ubuntu, VirtualBox and Wireshark brand icons are supplied by Simple Icons.
 
 SDN describes a networking approach rather than a single product; its chip uses
 a generic network symbol rather than an organisation or certification logo.
