@@ -52,11 +52,8 @@ badges and unrelated vendor logos are not used as substitutes.
 
 ## Implementation notes
 
-**GitHub repository count:** The About statistic counts all 12 repositories owned
-by DKon109, including public and private repositories, as reviewed on
-19 November 2026. Each repository counts once, including sites, prototypes,
-coursework and tutorials. This is a repository total rather than a count of
-shipped full-stack applications.
+**About statistics:** The displayed full-stack app total is 9, as specified by
+the portfolio owner. It is maintained separately from the GitHub repository count.
 
 **Live previews load on approach.** Each project card embeds the real deployed site
 rather than a screenshot. Loading four external apps up front cost several seconds on

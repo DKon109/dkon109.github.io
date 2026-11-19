@@ -123,7 +123,7 @@ export const stack: { category: string; items: Tech[] }[] = [
   },
   {
     category: 'Mobile',
-    items: [tech(siKotlin), tech(siAndroid), tech(siAndroidstudio), practice('ADB')],
+    items: [tech(siKotlin), tech(siAndroid), tech(siAndroidstudio)],
   },
   {
     category: 'Networking',
@@ -150,8 +150,6 @@ export const stack: { category: string; items: Tech[] }[] = [
     items: [
       tech(siPostgresql), tech(siMongodb), tech(siMysql),
       tech(siMongoose), tech(siH2database),
-      practice('SQL', 'data'), practice('ER Modelling', 'data'),
-      practice('JPA', 'data'),
       { name: 'psycopg2', image: '/icons/psycopg.png', color: '#336791' },
     ],
   },
@@ -162,18 +160,13 @@ export const stack: { category: string; items: Tech[] }[] = [
       { name: 'Matplotlib', image: '/icons/matplotlib.svg', color: '#11557c' },
       { name: 'Seaborn', image: '/icons/seaborn.svg', color: '#4c72b0' },
       tech(siGooglegemini, 'Gemini API'),
-      practice('Structured AI Outputs', 'data'),
     ],
   },
   {
     category: 'Security',
     items: [
       tech(siJsonwebtokens, 'JWT'),
-      practice('bcrypt', 'security'), practice('RBAC', 'security'),
-      practice('Input Validation', 'security'),
       { name: 'JADX', image: '/icons/jadx.png', color: '#8e1c68' },
-      practice('APK Analysis', 'security'),
-      practice('Threat Modelling', 'security'),
       practice('Vulnerability Reporting', 'security'),
     ],
   },
@@ -182,20 +175,12 @@ export const stack: { category: string; items: Tech[] }[] = [
     items: [
       tech(siJunit5, 'JUnit'), tech(siVitest), tech(siTestinglibrary), tech(siJest),
       { name: 'Mockito', image: '/icons/mockito.png', color: '#83a342' },
-      practice('Unit Testing', 'test'),
-      practice('Integration Testing', 'test'), practice('White-box Testing', 'test'),
-      practice('FSM Testing', 'test'), practice('Markov-based Testing', 'test'),
-      practice('Cyclomatic Complexity', 'test'),
     ],
   },
   {
     category: 'Design & Delivery',
     items: [
       tech(siUml), tech(siDiagramsdotnet), tech(siJira),
-      practice('Requirements Engineering', 'design'),
-      practice('Scrum', 'design'), practice('WBS & Gantt Planning', 'design'),
-      practice('Risk Management', 'design'),
-      practice('OOP & Design Patterns', 'design'),
       practice('Data Structures & Algorithms', 'code'),
     ],
   },

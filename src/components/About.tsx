@@ -4,7 +4,7 @@ import SectionLabel from './SectionLabel'
 
 const stats = [
   { target: 2, suffix: '+', label: 'Years of hands-on development', color: 'var(--sky)' },
-  { target: 12, suffix: '', label: 'GitHub repositories', color: 'var(--purple)' },
+  { target: 9, suffix: '', label: 'Full-stack apps shipped', color: 'var(--purple)' },
   { target: 2, suffix: '', label: 'Languages — English & Japanese', color: 'var(--pink)' },
 ]
 
