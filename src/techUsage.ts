@@ -2,6 +2,7 @@ export interface TechLink {
   label: string
   url: string
   kind: 'project' | 'tool'
+  isPrivate?: boolean
 }
 
 export interface TechUsage {
@@ -26,6 +27,11 @@ const albion = project('Albion Place Hotel', 'Albion-Website')
 const omiya = project('OMIYAcappella', 'omiyacappella-site')
 const portfolio = project('This portfolio', 'dkon109.github.io')
 const sqe = project('Game quality coursework', 'SQE-ShatteredPixelDungeon')
+const reversi = project('Python Reversi', 'COMP9001', '/blob/main/reversi_ai.py')
+const scam: TechLink = { ...project('Scam-call Detection', 'scam-call-detection'), isPrivate: true }
+const allProjects = [portfolio, albion, omiya, tixora, quiz, haven, medai, mimikopi, sqe, reversi, scam]
+const ciProjects = [portfolio, albion, omiya, tixora, quiz, haven, medai, sqe]
+const npmProjects = [portfolio, albion, omiya, tixora, quiz, medai, mimikopi]
 const training = project('Training experiments', 'AI-chatbot', '/blob/main/medical-ai-enhanced/backend/train_ai_agents.py')
 const mininet = tool('Mininet', 'mininet/mininet')
 const courseworkNote = 'The assignment implementation is not in a public repository. The link below is the tool’s official source.'
@@ -319,37 +325,37 @@ export const techUsage: Record<string, TechUsage> = {
   'Data Structures & Algorithms': {
     context: 'COMP9001 · Python Reversi',
     description: 'Implemented an 8×8 board game with legal-move detection, directional disc flipping and turn handling, alongside written algorithm-design coursework.',
-    links: [project('Python Reversi', 'COMP9001', '/blob/main/reversi_ai.py')],
+    links: [reversi],
   },
   Codex: {
-    context: 'This portfolio · Development workflow',
-    description: 'Used Codex to implement this portfolio’s components, interactive skill details and deployment updates, checking builds and reviewing changes before publication.',
-    links: [portfolio],
+    context: 'Websites, full-stack apps & coursework',
+    description: 'Used Codex for implementation, debugging, review and verification across this portfolio, Albion’s website, healthcare and store applications, Tixora, Mimikopi, game-quality coursework and the Android capstone.',
+    links: [portfolio, albion, medai, haven, tixora, mimikopi, sqe, scam],
   },
   'Claude Code': {
-    context: 'Mimikopi · Development workflow',
-    description: 'Used Claude Code while iterating on the transcription prototype and its local development workflow, reviewing generated changes alongside my own implementation.',
-    links: [mimikopi],
+    context: 'Web projects, prototypes & team coursework',
+    description: 'Used Claude Code to iterate on Mimikopi’s audio prototype, build and refine website interfaces, work through Java coursework and improve project documentation, tests and development workflows. Generated changes were reviewed alongside my own implementation.',
+    links: [mimikopi, portfolio, albion, omiya, quiz, haven, sqe, scam],
   },
   Cursor: {
-    context: 'Enterprise-store coursework · Development workflow',
-    description: 'Used Cursor to navigate and edit the Spring Boot project, following application logic across services, data models and tests.',
-    links: [haven],
+    context: 'Haven & Mimikopi · Editor workflow',
+    description: 'Used Cursor to navigate and edit Haven’s Spring Boot services, data models and tests, and to work through the audio-transcription prototype in Mimikopi.',
+    links: [haven, mimikopi],
   },
   Git: {
-    context: 'Team projects · Version control',
-    description: 'Used feature branches, small commits and reviewed merges to integrate my authentication work with the rest of the MERN Quiz team’s features.',
-    links: [quiz, tixora],
+    context: 'All projects · Version control',
+    description: 'Used Git to track code and content across my websites, applications, prototypes and coursework. Team projects used feature branches and reviewed merges; independent projects kept incremental commits for changes and fixes.',
+    links: allProjects,
   },
   GitHub: {
     context: 'Projects · Collaboration & delivery',
-    description: 'Published project source, reviewed pull requests and maintained automated build/deployment workflows, including this portfolio’s GitHub Pages delivery.',
-    links: [portfolio, quiz],
+    description: 'Hosted and maintained these project repositories, collaborated through commits and pull requests, and documented setup, contributions and verification. Public source is linked directly; the private capstone requires repository access.',
+    links: allProjects,
   },
   Docker: {
-    context: 'Haven & Tixora · Reproducible environments',
-    description: 'Packaged application services and their database dependencies so the full coursework stack can be built and run consistently.',
-    links: [haven, tixora],
+    context: 'Haven, Tixora & MedAI Pro',
+    description: 'Used container builds for the store, event-management and healthcare applications. Haven and Tixora also provide local application/database stacks; MedAI has a production Docker build checked in CI.',
+    links: [haven, tixora, medai],
   },
   'Cloudflare Workers': {
     context: 'OMIYAcappella · Production website',
@@ -362,14 +368,16 @@ export const techUsage: Record<string, TechUsage> = {
     links: [haven], note: 'The lightweight public demo disables RabbitMQ; the full Docker stack includes it.',
   },
   Linux: {
-    context: 'ELEC5517 · Network lab environment',
-    description: 'Used Linux commands and virtual network interfaces to run Mininet, inspect flow tables and troubleshoot connectivity between lab hosts.',
-    links: [mininet], note: courseworkNote,
+    context: 'SDN labs, application builds & CI',
+    description: 'Used Linux CLI tools for Mininet flow-table and connectivity checks, and Linux-based CI runners to validate websites, build applications and run Java and JavaScript tests across the linked projects.',
+    links: [...ciProjects, mininet],
+    note: 'Project links show Linux-based build and test workflows. The SDN assignment implementation is not public.',
   },
   Ubuntu: {
-    context: 'ELEC5517 · Ubuntu VM',
-    description: 'Set up an Ubuntu environment for the SDN labs and used it to run Mininet, Open vSwitch and network measurement commands.',
-    links: [mininet], note: courseworkNote,
+    context: 'Ubuntu VM & GitHub Actions runners',
+    description: 'Set up Ubuntu for Mininet and Open vSwitch labs, and used Ubuntu-based GitHub Actions jobs for HTML validation, React builds, Java tests, Docker builds and the community website’s scheduled updates.',
+    links: [...ciProjects, mininet],
+    note: 'The project repositories contain the Ubuntu CI workflows; the original network-lab implementation is not public.',
   },
   VirtualBox: {
     context: 'ELEC5517 · Virtual lab setup',
@@ -377,29 +385,29 @@ export const techUsage: Record<string, TechUsage> = {
     links: [tool('VirtualBox', 'VirtualBox/virtualbox')], note: courseworkNote,
   },
   npm: {
-    context: 'React projects · Build workflow',
-    description: 'Managed JavaScript dependencies and project scripts for local development, frontend tests and production builds.',
-    links: [portfolio, quiz],
+    context: 'Web applications, sites & automation',
+    description: 'Used npm scripts and dependencies for React frontends, Express services and Mimikopi’s workspace. Also used npx for Albion’s HTML checks and npm-installed Playwright for OMIYAcappella’s scheduled content updates.',
+    links: npmProjects,
   },
   Gradle: {
-    context: 'Shattered Pixel Dungeon · Java build',
-    description: 'Built the coursework fork and ran the screenshot utility’s unit tests through the project’s multi-module Gradle build.',
-    links: [sqe, haven],
+    context: 'Java coursework & Android capstone',
+    description: 'Used Gradle to build and test the Shattered Pixel Dungeon coursework fork and Haven’s Spring Boot application, and to build the Android module of the scam-call detection capstone.',
+    links: [sqe, haven, scam],
   },
   'GitHub Actions': {
-    context: 'This portfolio · Automated publishing',
-    description: 'Used the workflow that installs dependencies, builds the React app and deploys the result to GitHub Pages after a push to main.',
-    links: [portfolio, quiz],
+    context: 'Builds, regression checks & publishing',
+    description: 'Used workflows for portfolio publishing, quiz and healthcare tests, Java coursework checks, Tixora verification, Haven builds and Pages delivery, Albion HTML validation, and OMIYAcappella’s scheduled X-post updates.',
+    links: ciProjects,
   },
   Bash: {
-    context: 'MedAI Pro · Setup & operations',
-    description: 'Used shell setup and database commands to prepare local services, run migrations and start the application during development.',
-    links: [medai, omiya],
+    context: 'Local setup scripts & Linux CI steps',
+    description: 'Used Bash scripts to prepare MedAI’s database and start Mimikopi’s API, plus shell steps in Linux CI workflows to run validation, tests, builds and scheduled site updates.',
+    links: [medai, mimikopi, ...ciProjects.filter((link) => link !== medai)],
   },
   curl: {
-    context: 'Spring Boot APIs · Verification',
-    description: 'Sent HTTP requests to check service health and exercise API endpoints directly while debugging authentication and backend workflows.',
-    links: [haven, medai],
+    context: 'Healthcare, event & store APIs',
+    description: 'Used HTTP requests to check MedAI service health and exercise authenticated backend operations, including Tixora’s registration-closure/allocation endpoints and Spring Boot store workflows.',
+    links: [medai, tixora, haven],
   },
   'Docker Compose': {
     context: 'Haven & Tixora · Local stacks',

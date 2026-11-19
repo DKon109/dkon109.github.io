@@ -81,7 +81,9 @@ function TechDetails({ tech, onClose }: { tech: Tech; onClose: () => void }) {
         <p className="tech-details-context">{usage.context}</p>
         <p className="tech-details-description" id="tech-details-description">{usage.description}</p>
         <div className="tech-details-sources">
-          <span className="tech-details-source-label">Explore on GitHub</span>
+          <span className="tech-details-source-label">
+            Explore on GitHub{usage.links.length > 1 && ` · ${usage.links.length} links`}
+          </span>
           {usage.links.map((link) => (
             <a
               key={link.url}
@@ -89,14 +91,14 @@ function TechDetails({ tech, onClose }: { tech: Tech; onClose: () => void }) {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`${link.label} — ${link.kind === 'project' ? 'project' : 'official tool'} source on GitHub (opens in a new tab)`}
+              aria-label={`${link.label} — ${link.isPrivate ? 'private project' : link.kind === 'project' ? 'project' : 'official tool'} source on GitHub (opens in a new tab)`}
             >
               <span className="tech-source-github">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d={siGithub.path} fill="currentColor" /></svg>
               </span>
               <span className="tech-source-text">
                 <strong>{link.label}</strong>
-                <span>{link.kind === 'project' ? 'Project source' : 'Official tool source'}</span>
+                <span>{link.isPrivate ? 'Private project · access required' : link.kind === 'project' ? 'Project source' : 'Official tool source'}</span>
               </span>
               <svg className="tech-source-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
                 <path d="M6 18 18 6M6 6h12v12" />

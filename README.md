@@ -61,6 +61,9 @@ usage example and GitHub source cards. Content is maintained in `src/techUsage.t
 Public project code and upstream tool repositories have distinct labels; private
 coursework is identified explicitly. Escape, the close button and the backdrop
 dismiss the dialog, and native dialog focus returns to the triggering chip.
+Tools list every matching project confirmed from repository configuration,
+workflows and development history. Private project links are marked as requiring
+access; long source lists scroll independently within the dialog.
 
 **About statistics:** The displayed full-stack app total is 9, as specified by
 the portfolio owner. It is maintained separately from the GitHub repository count.
