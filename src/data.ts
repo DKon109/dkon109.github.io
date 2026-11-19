@@ -68,6 +68,16 @@ export const stack: { category: string; items: Tech[] }[] = [
     items: [tech(siKotlin), tech(siAndroid)],
   },
   {
+    category: 'Networking',
+    items: [
+      {
+        name: 'P4',
+        path: 'M8 5 1 12l7 7 1.5-1.5L4 12l5.5-5.5L8 5Zm8 0-1.5 1.5L20 12l-5.5 5.5L16 19l7-7-7-7ZM13 3l-4 18h2l4-18h-2Z',
+        color: '#7c3aed',
+      },
+    ],
+  },
+  {
     category: 'Database',
     items: [tech(siPostgresql), tech(siMongodb), tech(siMysql)],
   },
