@@ -52,14 +52,11 @@ badges and unrelated vendor logos are not used as substitutes.
 
 ## Implementation notes
 
-**Full-stack app count:** The About statistic counts four distinct applications
-with a frontend, application backend, and a published demo documented in GitHub:
-[Tixora](https://github.com/DKon109/Tixora),
-[MedAI Pro](https://github.com/DKon109/AI-chatbot),
-[MERN Online Quiz](https://github.com/DKon109/MERN-Online-Quiz-Platform), and
-[Haven](https://github.com/DKon109/Enterprise-Scale-Online-Store-System).
-Reviewed on 19 November 2026. Static sites, tutorials, and research prototypes
-without a shipped deployment are excluded; team projects count once per app.
+**GitHub repository count:** The About statistic counts all 12 repositories owned
+by DKon109, including public and private repositories, as reviewed on
+19 November 2026. Each repository counts once, including sites, prototypes,
+coursework and tutorials. This is a repository total rather than a count of
+shipped full-stack applications.
 
 **Live previews load on approach.** Each project card embeds the real deployed site
 rather than a screenshot. Loading four external apps up front cost several seconds on
