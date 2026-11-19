@@ -19,6 +19,16 @@ The P4 logo in `public/icons/p4.svg` is the unmodified P4.org logo displayed on
 [Wikipedia](https://en.wikipedia.org/wiki/P4_(programming_language)), sourced from
 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:P4-logo.svg).
 
+Other Networking assets are sourced from the official project sites, without
+modifying the images:
+
+- Mininet: [official site icon](https://mininet.org/favicon.png)
+- Open vSwitch: [official logo](https://www.openvswitch.org/assets/vswitch.png)
+- OpenFlow: [official logo](https://opennetworking.org/wp-content/uploads/2014/11/OpenFlow-Logo-Small.jpg)
+
+SDN describes a networking approach rather than a single product; its chip uses
+a generic network symbol rather than an organisation or certification logo.
+
 ## Implementation notes
 
 **Live previews load on approach.** Each project card embeds the real deployed site

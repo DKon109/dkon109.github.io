@@ -536,6 +536,11 @@
   object-fit: contain;
 }
 
+.tech-chip img {
+  width: auto;
+  max-width: 48px;
+}
+
 @media (max-width: 820px) {
   .stack-row {
     grid-template-columns: 1fr;
