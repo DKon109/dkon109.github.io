@@ -28,8 +28,12 @@ export default function Stack() {
         <Reveal>
           <SectionLabel n="02">My Stack</SectionLabel>
           <h2 className="section-title">
-            Tools I <span className="gradient-text">build with.</span>
+            What I <span className="gradient-text">build with.</span>
           </h2>
+          <p className="section-sub">
+            Technologies and engineering practices used across my university assignments,
+            team projects, and independent work.
+          </p>
         </Reveal>
 
         <div className="stack-rows" style={{ marginTop: 24 }}>
