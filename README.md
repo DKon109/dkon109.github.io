@@ -32,6 +32,24 @@ Ubuntu, VirtualBox and Wireshark brand icons are supplied by Simple Icons.
 SDN describes a networking approach rather than a single product; its chip uses
 a generic network symbol rather than an organisation or certification logo.
 
+Additional skill logos use assets published by their projects:
+
+| Skill | Official asset source |
+| --- | --- |
+| ONOS | [ONF project logo](https://opennetworking.org/wp-content/uploads/2020/01/onos-project-logo.png) |
+| iperf3 | [ESnet repository](https://github.com/esnet/iperf/blob/master/images/iperf3-logos-0413_6.png) |
+| tcpdump | [Project site icon](https://www.tcpdump.org/images/T-32x32.png) |
+| psycopg2 | [Psycopg project artwork](https://github.com/psycopg/psycopg.github.io/blob/master/img/logo/psycopg-100.png) |
+| Matplotlib | [Project documentation icon](https://matplotlib.org/_static/images/documentation.svg) |
+| Seaborn | [Official logo mark](https://seaborn.pydata.org/_images/logo-mark-lightbg.svg) |
+| JADX | [Project repository](https://github.com/skylot/jadx/blob/master/jadx-gui/src/main/resources/logos/jadx-logo.png) |
+| Mockito | [Project website artwork](https://github.com/mockito/mockito.github.io/blob/master/img/logo%402x.png) |
+| Docker Compose | [Docker repository](https://github.com/docker/compose/blob/main/logo.png) |
+
+These assets are displayed without recolouring. Practices and specifications
+without a verified standalone project logo retain neutral symbols; certification
+badges and unrelated vendor logos are not used as substitutes.
+
 ## Implementation notes
 
 **Live previews load on approach.** Each project card embeds the real deployed site
